@@ -1,10 +1,10 @@
-import './library.js';
+import Lib from './library.js';
 
 
 // noinspection JSUnusedGlobalSymbols
 const getters = {
     getInitFee: (state) => state.initFee,
-    getInitFeeSeparated: (state) => separateDigits(state.initFee),
+    getInitFeeSeparated: (state) => Lib.separateDigits(state.initFee),
     getInterestRate: (state) => state.interestRate.percent,
     getLoanTermAtMonths: (state) => state.loanTerm.months,
     getLoanTermAtYears: (state) => state.loanTerm.years,
@@ -12,7 +12,7 @@ const getters = {
     getLoanTermRange: (state) => state.loanTerm.range,
     getPercentAnchor: (state) => state.percentAnchor,
     getPrice: (state) => state.price,
-    getPriceSeparated: (state) => separateDigits(state.price),
+    getPriceSeparated: (state) => Lib.separateDigits(state.price),
 
     /**
      * Возвращает долю собственных средств
@@ -34,7 +34,7 @@ const getters = {
         const result = state.price - state.initFee;
         return result > 0 ? result : 0;
     },
-    getLoanBodySeparated: (state, getters) => separateDigits(getters.getLoanBody),
+    getLoanBodySeparated: (state, getters) => Lib.separateDigits(getters.getLoanBody),
 
     /**
      * Возвращает ежемесячный платеж
@@ -49,7 +49,7 @@ const getters = {
         const result = getters.getLoanBody * coefficient;
         return !isNaN(result) && isFinite(result) ? result : 0;
     },
-    getMonthPaymentSeparated: (state, getters) => separateDigits(getters.getMonthPayment),
+    getMonthPaymentSeparated: (state, getters) => Lib.separateDigits(getters.getMonthPayment),
 
     /**
      * Возвращает переплату по кредиту
@@ -62,7 +62,7 @@ const getters = {
         const result = getters.getMonthPayment * state.loanTerm.months - getters.getLoanBody;
         return isNaN(result) || result < 0 ? 0 : result;
     },
-    getOverpaymentSeparated: (state, getters) => separateDigits(getters.getOverpayment),
+    getOverpaymentSeparated: (state, getters) => Lib.separateDigits(getters.getOverpayment),
 
     /**
      * Возвращает необходимый доход
@@ -71,7 +71,7 @@ const getters = {
      * @returns {number}
      */
     getRequiredIncome: (state, getters) => 5 * getters.getMonthPayment / 3,
-    getRequiredIncomeSeparated: (state, getters) => separateDigits(getters.getRequiredIncome),
+    getRequiredIncomeSeparated: (state, getters) => Lib.separateDigits(getters.getRequiredIncome),
 };
 
 export default getters;
