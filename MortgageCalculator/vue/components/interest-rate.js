@@ -1,15 +1,8 @@
 export default {
-    data() {
-        return {
-            field: null,
-        };
-    },
-
-
     methods: {
-        setValue(value) {
-            this.$store.dispatch('setInterestRate', value);
-        },
+        ...Vuex.mapActions({
+            setValue: 'setInterestRate',
+        }),
 
         input() {
             this.setValue(Number(this.field.value.replaceAll(',', '.')));
@@ -57,9 +50,9 @@ export default {
 
 
     computed: {
-        interestRate() {
-            return this.$store.getters.getInterestRate;
-        },
+        ...Vuex.mapGetters({
+            interestRate: 'getInterestRate',
+        }),
     },
 
 

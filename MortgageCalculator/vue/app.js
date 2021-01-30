@@ -36,9 +36,9 @@ const app = new Vue({
     store,
 
     methods: {
-        loadData() {
-            this.$store.dispatch('loadData');
-        },
+        ...Vuex.mapActions({
+            loadData: 'loadData',
+        }),
 
         /**
          * Обновляет переданные поля
@@ -56,21 +56,12 @@ const app = new Vue({
     },
 
     computed: {
-        loanBodySeparated() {
-            return this.$store.getters.getLoanBodySeparated;
-        },
-
-        monthPaymentSeparated() {
-            return this.$store.getters.getMonthPaymentSeparated;
-        },
-
-        overpaymentSeparated() {
-            return this.$store.getters.getOverpaymentSeparated;
-        },
-
-        requiredIncomeSeparated() {
-            return this.$store.getters.getRequiredIncomeSeparated;
-        },
+        ...Vuex.mapGetters({
+            loanBodySeparated: 'getLoanBodySeparated',
+            monthPaymentSeparated: 'getMonthPaymentSeparated',
+            overpaymentSeparated: 'getOverpaymentSeparated',
+            requiredIncomeSeparated: 'getRequiredIncomeSeparated',
+        }),
     },
 
     created() {

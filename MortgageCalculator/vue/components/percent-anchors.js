@@ -13,6 +13,10 @@ export default {
     },
 
     methods: {
+        ...Vuex.mapActions({
+            setValue: 'setPercentAnchor',
+        }),
+
         init() {
             const radioList = this.$el.querySelectorAll('input[type="radio"]');
 
@@ -25,10 +29,6 @@ export default {
 
             this.setValue(null);
             radioList[0].parentNode.click();
-        },
-
-        setValue(value) {
-            this.$store.dispatch('setPercentAnchor', value);
         },
 
         change(event) {
@@ -46,13 +46,10 @@ export default {
 
 
     computed: {
-        initFeeSeparated() {
-            return this.$store.getters.getInitFeeSeparated;
-        },
-
-        percentAnchor() {
-            return this.$store.getters.getPercentAnchor;
-        },
+        ...Vuex.mapGetters({
+            initFeeSeparated: 'getInitFeeSeparated',
+            percentAnchor: 'getPercentAnchor',
+        }),
     },
 
 

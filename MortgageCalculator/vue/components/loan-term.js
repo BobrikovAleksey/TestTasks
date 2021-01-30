@@ -1,9 +1,9 @@
 // noinspection JSUnusedGlobalSymbols
 export default {
     methods: {
-        setValue(value) {
-            this.$store.dispatch('setLoanTermYear', value);
-        },
+        ...Vuex.mapActions({
+            setValue: 'setLoanTermYear',
+        }),
 
         change(event) {
             const value = Number(event.target.value);
@@ -17,22 +17,17 @@ export default {
 
 
     computed: {
-        loanTermAtMonths() {
-            return this.$store.getters.getLoanTermAtMonths;
-        },
-
-        loanTermRange() {
-            return this.$store.getters.getLoanTermRange;
-        },
-
-        loanTermAtYears() {
-            return this.$store.getters.getLoanTermAtYears;
-        },
+        ...Vuex.mapGetters({
+            loanTermAtMonths: 'getLoanTermAtMonths',
+            loanTermRange: 'getLoanTermRange',
+            loanTermAtYears: 'getLoanTermAtYears',
+        }),
     },
 
 
     mounted() {
-        this.$el.querySelector('.custom-select').value = this.loanTermAtYears;
+        this.select = this.$el.querySelector('.custom-select');
+        this.select.value = this.loanTermAtYears;
     },
 
 

@@ -3,19 +3,12 @@ import inputNumber from './libraries/input-number.js';
 
 // noinspection JSUnusedGlobalSymbols
 export default {
-    data() {
-        return {
-            field: null,
-        };
-    },
-
-
     methods: {
-        ...inputNumber,
+        ...Vuex.mapActions({
+            setValue: 'setPrice',
+        }),
 
-        setValue(value) {
-            this.$store.dispatch('setPrice', value);
-        },
+        ...inputNumber,
 
         input() {
             const position = this.getPosition();
@@ -32,17 +25,11 @@ export default {
 
 
     computed: {
-        initFeeSeparated() {
-            return this.$store.getters.getInitFeeSeparated;
-        },
-
-        price() {
-            return this.$store.getters.getPrice;
-        },
-
-        priceSeparated() {
-            return this.$store.getters.getPriceSeparated;
-        },
+        ...Vuex.mapGetters({
+            initFeeSeparated: 'getInitFeeSeparated',
+            price: 'getPrice',
+            priceSeparated: 'getPriceSeparated',
+        }),
     },
 
 

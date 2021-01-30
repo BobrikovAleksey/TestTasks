@@ -1,44 +1,32 @@
 // noinspection JSUnusedGlobalSymbols
 export default {
     methods: {
-        setInitFee(value) {
-            this.$store.dispatch('setInitFee', value);
-        },
-
-        setInterestRate(value) {
-            this.$store.dispatch('setInterestRate', value);
-        },
-
-        setLoanTerm(value) {
-            this.$store.dispatch('setLoanTermYear', value);
-        },
-
-        setPercentAnchor(value) {
-            this.$store.dispatch('setPercentAnchor', value);
-        },
-
-        setPrice(value) {
-            this.$store.dispatch('setPrice', value);
-        },
+        ...Vuex.mapActions({
+            setInitFee: 'setInitFee',
+            setInterestRate: 'setInterestRate',
+            setLoanTerm: 'setLoanTermYear',
+            setPercentAnchor: 'setPercentAnchor',
+            setPrice: 'setPrice',
+        }),
 
         /**
          * Очистка формы и временного хранилища
          */
         clear() {
             this.setPercentAnchor(null);
-            this.$root.$refs.percentAnchors.init();
+            this.refPercentAnchors.init();
 
             this.setPrice(0);
-            this.$root.$refs.price.getInput().value = '';
+            this.fieldPprice.value = '';
 
             this.setInitFee(0);
-            this.$root.$refs.initFee.getInput().value = '';
+            this.fieldInitFee.value = '';
 
             this.setLoanTerm(this.loanTermDefault);
-            this.$root.$refs.loanTerm.getSelect().value = this.loanTermDefault;
+            this.selectLoanTerm.value = this.loanTermDefault;
 
             this.setInterestRate(0);
-            this.$root.$refs.interestRate.getInput().value = '';
+            this.fieldInterestRate.value = '';
 
             localStorage.clear();
         },
@@ -57,29 +45,24 @@ export default {
 
 
     computed: {
-        initFee() {
-            return this.$store.getters.getInitFee;
-        },
+        ...Vuex.mapGetters({
+            initFee: 'getInitFee',
+            interestRate: 'getInterestRate',
+            loanTermDefault: 'getLoanTermDefault',
+            loanTermAtYears: 'getLoanTermAtYears',
+            percentAnchor: 'getPercentAnchor',
+            price: 'getPrice',
+        }),
+    },
 
-        interestRate() {
-            return this.$store.getters.getInterestRate;
-        },
 
-        loanTermDefault() {
-            return this.$store.getters.getLoanTermDefault;
-        },
-
-        loanTermAtYears() {
-            return this.$store.getters.getLoanTermAtYears;
-        },
-
-        percentAnchor() {
-            return this.$store.getters.getPercentAnchor;
-        },
-
-        price() {
-            return this.$store.getters.getPrice;
-        },
+    mounted() {
+        const refs = this.$root.$refs;
+        this.refPercentAnchors = refs.percentAnchors;
+        this.fieldPprice = refs.price.field;
+        this.fieldInitFee = refs.initFee.field;
+        this.selectLoanTerm = refs.loanTerm.select;
+        this.fieldInterestRate = refs.interestRate.field;
     },
 
 
