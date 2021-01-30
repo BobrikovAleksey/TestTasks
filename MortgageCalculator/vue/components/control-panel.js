@@ -37,7 +37,7 @@ export default {
         saveData() {
             localStorage.setItem('price', this.price.toString());
             localStorage.setItem('initFee', this.initFee.toString());
-            localStorage.setItem('percentAnchor', this.percentAnchor.toString());
+            localStorage.setItem('percentAnchor', this.percentAnchor);
             localStorage.setItem('loanTerm', this.loanTermAtYears.toString());
             localStorage.setItem('interestRate', this.interestRate.toString());
         },
