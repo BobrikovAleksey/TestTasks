@@ -1,0 +1,169 @@
+@import "vars", "functions";
+
+
+/** *********************************************
+ *   F O N T S                                  *
+ ********************************************** */
+
+// font family
+
+@mixin font-awesome() {
+  font-family: "FontAwesome", serif;
+}
+
+@mixin font-futura-pt($weight: 300) {
+  font-family: "FuturaPT", serif;
+  font-weight: $weight;
+}
+
+// font sizes
+
+@mixin font-size($size: 14px, $height: normal) {
+  font-size: $size;
+  line-height: $height;
+}
+
+@mixin H1() {
+  @include font-futura-pt(900);
+  @include font-size(48px, 48px);
+  text-transform: uppercase;
+
+  @media (max-width: $SizeDesktopLg - 1px) {
+    @include font-size(calc-size-desktop-desktop-lg(32, 48), calc-size-desktop-desktop-lg(32, 48));
+  }
+
+  @media (max-width: $SizeDesktop) {
+    @include font-size(32px, 32px);
+  }
+
+  @media (max-width: $SizeTablet - 1px) {
+    @include font-size(calc-size-desktop-desktop-lg(24, 32), calc-size-desktop-desktop-lg(24, 32));
+  }
+
+  @media (max-width: $SizePhone) {
+    @include font-size(24px, 24px);
+  }
+}
+
+@mixin H2() {
+  @include font-futura-pt(700);
+  @include font-size(32px, 32px);
+
+  @media (max-width: $SizeDesktopLg - 1px) {
+    @include font-size(calc-size-desktop-desktop-lg(24, 32), calc-size-desktop-desktop-lg(24, 32));
+  }
+
+  @media (max-width: $SizeDesktop) {
+    @include font-size(24px, 24px);
+  }
+}
+
+@mixin P() {
+  @include font-futura-pt;
+  @include font-size(20px, 30px);
+
+  @media (max-width: $SizeDesktopLg - 1px) {
+    @include font-size(calc-size-desktop-desktop-lg(16, 20), calc-size-desktop-desktop-lg(24, 30));
+  }
+
+  @media (max-width: $SizeDesktop - 1px) {
+    @include font-size(16px, 24px);
+  }
+}
+
+
+/** *********************************************
+ *   D I S P L A Y                              *
+ ********************************************** */
+
+// flex
+
+@mixin flex-hcenter() {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-hbetween() {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex-vcenter() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-between-center() {
+  @include flex-hbetween;
+  align-items: center;
+}
+
+@mixin flex-center-center() {
+  @include flex-hcenter;
+  align-items: center;
+}
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center() {
+  @include flex-column;
+  align-items: center;
+}
+
+
+/** *********************************************
+ *   P O S I T I O N                            *
+ ********************************************** */
+
+@mixin position-top-bottom($top: 0, $bottom: $top) {
+  top: $top;
+  bottom: $bottom;
+}
+
+@mixin position-top-left($top: 0, $left: 0) {
+  top: $top;
+  left: $left;
+}
+
+@mixin position-top-right($top: 0, $right: 0) {
+  top: $top;
+  right: $right;
+}
+
+@mixin position-bottom-left($bottom: 0, $left: 0) {
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin position-bottom-right($bottom: 0, $right: 0) {
+  bottom: $bottom;
+  right: $right;
+}
+
+
+/** *********************************************
+ *   P A D D I N G  /  M A R G I N              *
+ ********************************************** */
+
+@mixin padding-horizontal($left: auto, $right: $left) {
+  padding-left: $left;
+  padding-right: $right;
+}
+
+@mixin padding-vertical($top: auto, $bottom: $top) {
+  padding-top: $top;
+  padding-bottom: $bottom;
+}
+
+@mixin margin-horizontal($left: auto, $right: $left) {
+  margin-left: $left;
+  margin-right: $right;
+}
+
+@mixin margin-vertical($top: auto, $bottom: $top) {
+  margin-top: $top;
+  margin-bottom: $bottom;
+}
