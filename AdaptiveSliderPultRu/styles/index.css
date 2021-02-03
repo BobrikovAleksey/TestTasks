@@ -121,8 +121,9 @@ h1 {
 }
 @media (max-width: 599px) {
   h1 {
-    font-size: calc(32px - (1920px - 100vw) * 0.0125);
-    line-height: calc(32px - (1920px - 100vw) * 0.0125);
+    font-size: calc(32px - (600px - 100vw) * 0.0285714286);
+    line-height: calc(32px - (600px - 100vw) * 0.0285714286);
+    font-weight: 700;
   }
 }
 @media (max-width: 320px) {
@@ -306,6 +307,17 @@ p {
 .button_fill-gold {
   color: white;
   background: #A89365;
+}
+.button_link {
+  width: auto;
+  min-width: auto;
+  height: auto;
+  color: #A89365;
+  padding: 0;
+}
+.button_link svg {
+  fill: #A89365;
+  margin-left: 13px;
 }
 
 /** *********************************************

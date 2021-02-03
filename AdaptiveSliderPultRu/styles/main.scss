@@ -5,11 +5,33 @@
   background: $Background;
 
   &__container {
-    @include flex-between-center;
-    @include padding-vertical(34px);
+    @include padding-vertical(40px);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 
     @media (max-width: $SizeDesktopLg - 1px) {
-      @include padding-vertical(35px, 33px);
+      @include padding-vertical(39px);
+    }
+
+    @media (max-width: $SizeDesktop - 1px) {
+      @include padding-vertical(calc-size-phone-tablet(19, 39));
+    }
+
+    @media (max-width: $SizeTablet - 1px) {
+      width: 300px;
+      min-width: auto;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 20px 0;
+    }
+  }
+
+  &__portfolio {
+    @media (max-width: $SizeTablet - 1px) {
+      margin-top: 10px;
     }
   }
 }
@@ -26,10 +48,6 @@
       @include padding-vertical(15px, 20px);
       flex-direction: column;
     }
-  }
-
-  &__specialist {
-    //
   }
 
   &__design {
