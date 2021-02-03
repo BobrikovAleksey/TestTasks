@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1, width=320">
 
     <!-- favicon -->
+    <link rel="icon" type="image/png" href="./favicon.png" sizes="32x32">
 
     <!-- styles -->
     <link href="./styles/modules/font-awesome.css" rel="stylesheet">
@@ -21,7 +22,14 @@
         <div class="container header__container">
             <h1 class="header__title">Портфолио</h1>
 
-            <button class="button button_link">Смотреть портфолио</button>
+            <button class="button button_link">
+                Смотреть портфолио
+                <svg xmlns="http://www.w3.org/2000/svg" fill="black"
+                     enable-background="new 0 0 24 24" viewBox="0 0 24 24" width="18px" height="18px">
+                    <rect fill="none" height="24" width="24" />
+                    <path d="M15,5l-1.41,1.41L18.17,11H2V13h16.17l-4.59,4.59L15,19l7-7L15,5z" />
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -34,7 +42,7 @@
                     </div>
 
                     <div class="card__info">
-                        <h2 class="card__title">Домашний кинотеатр<br>с изюминкой</h2>
+                        <h2>Домашний кинотеатр<br>с изюминкой</h2>
 
                         <p class="card__text">
                             В нашем новом проекте домашнего кинотеатра задача была в целом довольно типичной – построить
@@ -49,7 +57,7 @@
                     </div>
 
                     <div class="card__info">
-                        <h2 class="card__title">Роскошный автомобиль<br>с «умным салоном»</h2>
+                        <h2>Роскошный автомобиль<br>с «умным салоном»</h2>
 
                         <p class="card__text">
                             Эксклюзивный Mercedes Benz V class обрел не только шикарный салон первого класса с креслами,
@@ -65,7 +73,7 @@
                     </div>
 
                     <div class="card__info">
-                        <h2 class="card__title">Гостиная-кинотеатр</h2>
+                        <h2>Гостиная-кинотеатр</h2>
 
                         <p class="card__text">
                             Посмотрев на фотографии этой светлой гостиной сразу и не поймешь, что расположена она в
@@ -80,7 +88,7 @@
                     </div>
 
                     <div class="card__info">
-                        <h2 class="card__title">Кинотеатр на крыше</h2>
+                        <h2>Кинотеатр на крыше</h2>
 
                         <p class="card__text">
                             Посмотрев на фотографии этой светлой гостиной сразу и не поймешь, что расположена она в
@@ -95,7 +103,7 @@
                     </div>
 
                     <div class="card__info">
-                        <h2 class="card__title">Домашний кинотеатр<br>с изюминкой</h2>
+                        <h2>Домашний кинотеатр<br>с изюминкой</h2>
 
                         <p class="card__text">
                             В нашем новом проекте домашнего кинотеатра задача была в целом довольно типичной – построить
@@ -110,7 +118,7 @@
                     </div>
 
                     <div class="card__info">
-                        <h2 class="card__title">Роскошный автомобиль<br>с «умным салоном»</h2>
+                        <h2>Роскошный автомобиль<br>с «умным салоном»</h2>
 
                         <p class="card__text">
                             Эксклюзивный Mercedes Benz V class обрел не только шикарный салон первого класса с креслами,
@@ -126,7 +134,7 @@
                     </div>
 
                     <div class="card__info">
-                        <h2 class="card__title">Гостиная-кинотеатр</h2>
+                        <h2>Гостиная-кинотеатр</h2>
 
                         <p class="card__text">
                             Посмотрев на фотографии этой светлой гостиной сразу и не поймешь, что расположена она в
@@ -141,7 +149,38 @@
                     </div>
 
                     <div class="card__info">
-                        <h2 class="card__title">Кинотеатр на крыше</h2>
+                        <h2>Кинотеатр на крыше</h2>
+
+                        <p class="card__text">
+                            Посмотрев на фотографии этой светлой гостиной сразу и не поймешь, что расположена она в
+                            цокольном этаже дома и не имеет окон.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__photo">
+                        <img src="images/mercedes.jpg" alt="mercedes">
+                    </div>
+
+                    <div class="card__info">
+                        <h2>Роскошный автомобиль<br>с «умным салоном»</h2>
+
+                        <p class="card__text">
+                            Эксклюзивный Mercedes Benz V class обрел не только шикарный салон первого класса с креслами,
+                            баром, сейфом и телевизором, но и благодаря нашей помощи позволил управлять всем этим богатством
+                            с iPad!
+                        </p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__photo">
+                        <img src="images/acoustics.jpg" alt="acoustics">
+                    </div>
+
+                    <div class="card__info">
+                        <h2>Гостиная-кинотеатр</h2>
 
                         <p class="card__text">
                             Посмотрев на фотографии этой светлой гостиной сразу и не поймешь, что расположена она в
@@ -155,15 +194,13 @@
 
     <footer class="footer">
         <div class="container footer__container">
-            <button class="button button_gold">Заказать выезд специалиста</button>
+            <button class="button button_gold footer__specialist">Заказать выезд специалиста</button>
 
-            <button class="button button_fill-gold">Заказать проектирование</button>
+            <button class="button button_fill-gold footer__design">Заказать проектирование</button>
         </div>
     </footer>
 
     <!-- scripts -->
-    <script src="./scripts/modules/jquery.js"></script>
-    <script src="./scripts/modules/jquery-slick.js"></script>
-<!--    <script type="module" src="./scripts/index.js"></script>-->
+    <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

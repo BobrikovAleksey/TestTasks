@@ -2,7 +2,7 @@
 
 
 .button {
-  @include font-futura-pt();
+  @include font-futura-pt;
   @include font-size(18px, 23px);
   @include flex-center-center;
   cursor: pointer;
@@ -13,27 +13,25 @@
   text-align: center;
   padding: 8px 12px;
 
-
   @media (max-width: $SizeDesktopLg - 1px) {
     width: calc-size-desktop-desktop-lg($InputWidthLgN, $InputWidthXLgN);
     height: calc-size-desktop-desktop-lg($InputHeightLgN, $InputHeightXLgN);
   }
 
-  @media (max-width: $SizeDesktop - 1px) {
+  @media (max-width: $SizeDesktop) {
+    width: $InputWidthLg;
+    height: $InputHeightLg;
+  }
+
+  @media (max-width: 768px) {
     width: $InputWidthMd;
     height: $InputHeightMd;
   }
 
-  @media (max-width: $SizeTablet) {
-    width: calc-size-phone-tablet($InputWidthSmN, $InputWidthMdN);
-    height: calc-size-phone-tablet($InputHeightSmN, $InputHeightMdN);
-  }
-
-  @media (max-width: $SizePhone) {
+  @media (max-width: $SizeTablet - 1px) {
     width: $InputWidthSm;
     height: $InputHeightSm;
   }
-
 
   &_gold {
     color: $Brand;
@@ -41,10 +39,8 @@
     border: 1px solid $Brand;
   }
 
-
   &_fill-gold {
     color: $Background;
     background: $Brand;
-    margin-left: 40px;
   }
 }

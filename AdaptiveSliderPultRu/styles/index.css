@@ -1,0 +1,473 @@
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S                         *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S  W I T H  S C R O L L   *
+ ********************************************** */
+/** *********************************************
+ *   F O N T S                                  *
+ ********************************************** */
+/** *********************************************
+ *   D I S P L A Y                              *
+ ********************************************** */
+/** *********************************************
+ *   P O S I T I O N                            *
+ ********************************************** */
+/** *********************************************
+ *   P A D D I N G  /  M A R G I N              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S                         *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S  W I T H  S C R O L L   *
+ ********************************************** */
+@font-face {
+  font-family: "FuturaPT";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/FuturaPT-Book.eot");
+  src: local("FuturaPT"), local("FuturaPT Book"), url("./fonts/FuturaPT-Book.woff") format("woff"), url("./fonts/FuturaPT-Book.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FuturaPT";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/FuturaPT-Medium.eot");
+  src: local("FuturaPT"), local("FuturaPT Medium"), url("./fonts/FuturaPT-Medium.woff") format("woff"), url("./fonts/FuturaPT-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FuturaPT";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/FuturaPT-Bold.eot");
+  src: local("FuturaPT"), local("FuturaPT Bold"), url("./fonts/FuturaPT-Bold.woff") format("woff"), url("./fonts/FuturaPT-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FuturaPT";
+  font-style: normal;
+  font-weight: 900;
+  src: url("./fonts/FuturaPT-ExtraBold.eot");
+  src: local("FuturaPT"), local("FuturaPT ExtraBold"), url("./fonts/FuturaPT-ExtraBold.woff") format("woff"), url("./fonts/FuturaPT-ExtraBold.ttf") format("truetype");
+}
+* {
+  box-sizing: border-box;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "FuturaPT", serif;
+  font-weight: 300;
+  user-select: none;
+  overflow-x: hidden;
+  color: #575757;
+}
+@media (max-width: 340px) {
+  body {
+    overflow-x: auto;
+  }
+}
+
+h1, h2 {
+  color: #A89365;
+}
+
+h1 {
+  font-family: "FuturaPT", serif;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 48px;
+  text-transform: uppercase;
+}
+@media (max-width: 1919px) {
+  h1 {
+    font-size: calc(48px - (1920px - 100vw) * 0.025);
+    line-height: calc(48px - (1920px - 100vw) * 0.025);
+  }
+}
+@media (max-width: 1280px) {
+  h1 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
+@media (max-width: 599px) {
+  h1 {
+    font-size: calc(32px - (1920px - 100vw) * 0.0125);
+    line-height: calc(32px - (1920px - 100vw) * 0.0125);
+  }
+}
+@media (max-width: 320px) {
+  h1 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+h2 {
+  font-family: "FuturaPT", serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+}
+@media (max-width: 1919px) {
+  h2 {
+    font-size: calc(32px - (1920px - 100vw) * 0.0125);
+    line-height: calc(32px - (1920px - 100vw) * 0.0125);
+  }
+}
+@media (max-width: 1280px) {
+  h2 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+p {
+  font-family: "FuturaPT", serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 30px;
+}
+@media (max-width: 1919px) {
+  p {
+    font-size: calc(20px - (1920px - 100vw) * 0.00625);
+    line-height: calc(30px - (1920px - 100vw) * 0.009375);
+  }
+}
+@media (max-width: 1279px) {
+  p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (pointer: fine) {
+  button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 80px;
+  padding-right: calc(80px - 100vw + 100%);
+  max-width: 1920px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+@media (max-width: 1919px) {
+  .container {
+    padding-left: calc(80px - (1920px - 100vw) * 0.0625);
+    padding-right: max(calc(10px - 100vw + 320px), calc(80px + 100% - 100vw - (1920px - 100vw) * 0.0625));
+  }
+}
+@media (max-width: 1279px) {
+  .container {
+    padding-left: calc(40px - (1280px - 100vw) * 0.0294117647);
+    padding-right: max(calc(10px - 100vw + 320px), calc(40px + 100% - 100vw - (1280px - 100vw) * 0.0294117647));
+  }
+}
+@media (max-width: 599px) {
+  .container {
+    padding-left: calc(20px - (600px - 100vw) * 0.0357142857);
+    padding-right: max(calc(10px - 100vw + 320px), calc(20px + 100% - 100vw - (600px - 100vw) * 0.0357142857));
+  }
+}
+@media (max-width: 320px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S                         *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S  W I T H  S C R O L L   *
+ ********************************************** */
+/** *********************************************
+ *   F O N T S                                  *
+ ********************************************** */
+/** *********************************************
+ *   D I S P L A Y                              *
+ ********************************************** */
+/** *********************************************
+ *   P O S I T I O N                            *
+ ********************************************** */
+/** *********************************************
+ *   P A D D I N G  /  M A R G I N              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S                         *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S  W I T H  S C R O L L   *
+ ********************************************** */
+.button {
+  font-family: "FuturaPT", serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 360px;
+  min-width: 300px;
+  height: 60px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px 12px;
+}
+@media (max-width: 1919px) {
+  .button {
+    width: calc(360px - (1920px - 100vw) * 0.09375);
+    height: calc(60px - (1920px - 100vw) * 0.0234375);
+  }
+}
+@media (max-width: 1280px) {
+  .button {
+    width: 300px;
+    height: 45px;
+  }
+}
+@media (max-width: 768px) {
+  .button {
+    width: 560px;
+    height: 45px;
+  }
+}
+@media (max-width: 599px) {
+  .button {
+    width: 300px;
+    height: 45px;
+  }
+}
+.button_gold {
+  color: #A89365;
+  background: white;
+  border: 1px solid #A89365;
+}
+.button_fill-gold {
+  color: white;
+  background: #A89365;
+}
+
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S                         *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S  W I T H  S C R O L L   *
+ ********************************************** */
+/** *********************************************
+ *   F O N T S                                  *
+ ********************************************** */
+/** *********************************************
+ *   D I S P L A Y                              *
+ ********************************************** */
+/** *********************************************
+ *   P O S I T I O N                            *
+ ********************************************** */
+/** *********************************************
+ *   P A D D I N G  /  M A R G I N              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S                         *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S  W I T H  S C R O L L   *
+ ********************************************** */
+.slick-arrow {
+  z-index: 100;
+  cursor: pointer;
+  overflow: hidden;
+  width: 24px;
+  height: 24px;
+  color: transparent;
+  border-bottom: 2px solid #A89365;
+  border-left: 2px solid #A89365;
+  position: absolute;
+  top: 258px;
+}
+@media (max-width: 1919px) {
+  .slick-arrow {
+    width: calc(24px - (1920px - 100vw) * 0.0171875);
+    height: calc(24px - (1920px - 100vw) * 0.0171875);
+    top: calc(258px - (1920px - 100vw) * 0.1015625);
+  }
+}
+@media (max-width: 1280px) {
+  .slick-arrow {
+    width: 13px;
+    height: 13px;
+    top: 193px;
+  }
+}
+.slick-prev {
+  transform: rotate(45deg);
+  left: -24px;
+}
+@media (max-width: 1919px) {
+  .slick-prev {
+    left: calc(-24px - (1920px - 100vw) * -0.0328125);
+  }
+}
+@media (max-width: 1280px) {
+  .slick-prev {
+    left: -3px;
+  }
+}
+@media (max-width: 1279px) {
+  .slick-prev {
+    left: calc(-3px - (1280px - 100vw) * 0.0864197531);
+  }
+}
+@media (max-width: 1199px) {
+  .slick-prev {
+    left: -10px;
+  }
+}
+.slick-next {
+  right: -24px;
+  transform: rotate(-135deg);
+}
+@media (max-width: 1919px) {
+  .slick-next {
+    right: calc(-24px - (1920px - 100vw) * -0.0328125);
+  }
+}
+@media (max-width: 1280px) {
+  .slick-next {
+    right: -3px;
+  }
+}
+@media (max-width: 1279px) {
+  .slick-next {
+    right: calc(-3px - (1280px - 100vw) * 0.0864197531);
+  }
+}
+@media (max-width: 1199px) {
+  .slick-next {
+    right: -10px;
+  }
+}
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+}
+.slick-dots li {
+  list-style-type: none;
+  margin-left: 10px;
+}
+.slick-dots li:first-of-type {
+  margin-left: 0;
+}
+.slick-dots li button {
+  overflow: hidden;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  color: transparent;
+  border-radius: 50%;
+  position: relative;
+}
+.slick-dots li button:before {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #F2F2F2;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  margin: auto;
+}
+.slick-dots li.slick-active button:before {
+  background: #A89365;
+}
+
+/*# sourceMappingURL=index.css.map */

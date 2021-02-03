@@ -1,0 +1,215 @@
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S                         *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S  W I T H  S C R O L L   *
+ ********************************************** */
+/** *********************************************
+ *   F O N T S                                  *
+ ********************************************** */
+/** *********************************************
+ *   D I S P L A Y                              *
+ ********************************************** */
+/** *********************************************
+ *   P O S I T I O N                            *
+ ********************************************** */
+/** *********************************************
+ *   P A D D I N G  /  M A R G I N              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   S I Z E S                                  *
+ ********************************************** */
+/** *********************************************
+ *   P A L E T T E                              *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S                         *
+ ********************************************** */
+/** *********************************************
+ *   C A L C  S I Z E S  W I T H  S C R O L L   *
+ ********************************************** */
+.header {
+  background: white;
+}
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+@media (max-width: 1919px) {
+  .header__container {
+    padding-top: 35px;
+    padding-bottom: 33px;
+  }
+}
+
+.footer {
+  background: white;
+}
+.footer__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .footer__container {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    flex-direction: column;
+  }
+}
+.footer__design {
+  margin: 0 0 0 40px;
+}
+@media (max-width: 768px) {
+  .footer__design {
+    margin: 20px 0 0;
+  }
+}
+
+.slider__container {
+  display: block;
+  padding: 0 0 0 calc(100vw - 100%);
+  position: relative;
+}
+.slider__content {
+  width: 1800px;
+  margin: 0 auto;
+}
+@media (max-width: 1919px) {
+  .slider__content {
+    width: calc(1800px - (1920px - 100vw) * 0.875);
+  }
+}
+@media (max-width: 1279px) {
+  .slider__content {
+    width: calc(1240px - (1280px - 100vw) * 1);
+  }
+}
+@media (max-width: 1199px) {
+  .slider__content {
+    width: 1020px;
+  }
+}
+@media (max-width: 1079px) {
+  .slider__content {
+    width: calc(1020px - (1080px - 100vw) * 1.0714285714);
+  }
+}
+@media (max-width: 939px) {
+  .slider__content {
+    width: 680px;
+  }
+}
+@media (max-width: 768px) {
+  .slider__content {
+    width: calc(680px - (768px - 100vw) * 0.5952380952);
+  }
+}
+@media (max-width: 599px) {
+  .slider__content {
+    width: 320px;
+  }
+}
+
+.card {
+  padding: 0 20px;
+}
+@media (max-width: 1279px) {
+  .card {
+    padding: 0 calc(20px - (1280px - 100vw) * 0.125);
+  }
+}
+@media (max-width: 1199px) {
+  .card {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 1079px) {
+  .card {
+    padding: 0 calc(20px - (1080px - 100vw) * 0.0714285714);
+  }
+}
+@media (max-width: 939px) {
+  .card {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 768px) {
+  .card {
+    padding: 0 calc(20px - (768px - 100vw) * 0.0595238095);
+  }
+}
+@media (max-width: 599px) {
+  .card {
+    padding: 0 10px;
+  }
+}
+.card__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 540px;
+}
+@media (max-width: 1919px) {
+  .card__photo {
+    height: calc(540px - (1920px - 100vw) * 0.28125);
+  }
+}
+@media (max-width: 1280px) {
+  .card__photo {
+    height: 360px;
+  }
+}
+.card__photo img {
+  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+.card__info {
+  margin-top: 21px;
+}
+.card__text {
+  margin-top: 19px;
+}
+@media (max-width: 1919px) {
+  .card__info, .card__text {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .card__info, .card__text {
+    margin-top: calc(20px - (768px - 100vw) * 0.0595238095);
+  }
+}
+@media (max-width: 600px) {
+  .card__info, .card__text {
+    margin-top: 10px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

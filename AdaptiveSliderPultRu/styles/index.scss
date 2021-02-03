@@ -1,0 +1,80 @@
+@import "mixins", "vars", "functions", "fonts";
+
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+body {
+  @include font-futura-pt;
+  user-select: none;
+  overflow-x: hidden;
+  color: $Text;
+
+  @media (max-width: $SizePhone + 20px) {
+    overflow-x: auto;
+  }
+}
+
+
+h1, h2 {
+  color: $Brand;
+}
+
+h1 {
+  @include H1;
+}
+
+h2 {
+  @include H2;
+}
+
+
+p {
+  @include P;
+}
+
+
+@media (pointer: fine) {
+  button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+}
+
+
+.container {
+  @include flex-between-center;
+  @include padding-horizontal($ContainerPaddingXLg, calc(#{$ContainerPaddingXLg} - 100vw + 100%));
+  max-width: $SizeDesktopLg;
+  min-width: $SizePhone;
+  margin: 0 auto;
+
+  @media (max-width: $SizeDesktopLg - 1px) {
+    @include padding-horizontal(calc-size-desktop-desktop-lg($ContainerPaddingLgN, $ContainerPaddingXLgN),
+                                calc-size-with-scroll-desktop-desktop-lg($ContainerPaddingLgN, $ContainerPaddingXLgN));
+  }
+
+  @media (max-width: $SizeDesktop - 1px) {
+    @include padding-horizontal(calc-size-tablet-desktop($ContainerPaddingMdN, $ContainerPaddingLgN),
+                                calc-size-with-scroll-tablet-desktop($ContainerPaddingMdN, $ContainerPaddingLgN));
+  }
+
+  @media (max-width: $SizeTablet - 1px) {
+    @include padding-horizontal(calc-size-phone-tablet($ContainerPaddingSmN, $ContainerPaddingMdN),
+                                calc-size-with-scroll-phone-tablet($ContainerPaddingSmN, $ContainerPaddingMdN));
+  }
+
+  @media (max-width: $SizePhone) {
+    @include padding-horizontal($ContainerPaddingSm);
+  }
+}
+
+
+@import "elements/button";
+@import "elements/slick";
