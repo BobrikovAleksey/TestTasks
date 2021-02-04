@@ -16,7 +16,8 @@ export default {
                     </button>
 
                     <button type="button" class="btn btn-warning" @click="moveToList">
-                        <i class="fa fa-arrow-right"></i>
+                        <i v-if="name === 'active'" class="fa fa-arrow-right"></i>
+                        <i v-else class="fa fa-arrow-left"></i>
                     </button>
                 </div>
 
