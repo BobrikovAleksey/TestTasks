@@ -15,7 +15,7 @@ export default {
                         <i class="fa fa-arrow-down"></i>
                     </button>
 
-                    <button type="button" class="btn btn-warning">
+                    <button type="button" class="btn btn-warning" @click="moveToList">
                         <i class="fa fa-arrow-right"></i>
                     </button>
                 </div>
@@ -59,6 +59,14 @@ export default {
 
         moveDown: function() {
             this.move({ listName: this.name, deal: this.deal, direction: Directions.down });
+        },
+
+        moveToList: function() {
+            if (this.name === ListNames.active) {
+                this.move({ listName: ListNames.active, deal: this.deal, direction: Directions.complete });
+            } else if (this.name === ListNames.complete) {
+                this.move({ listName: ListNames.complete, deal: this.deal, direction: Directions.active });
+            }
         },
     },
 

@@ -5,7 +5,7 @@ import { ListNames } from '../store/dictionary.js';
 export default {
     template: `
         <div class="col-lg-6">
-            <h2>Активные задачи {{listName}}</h2>
+            <h2>{{ title }}</h2>
 
             <div class="mt-3">
                 <v-card v-for="el in dealList" :key="el.id" :deal="el" :name="listName"></v-card>
@@ -14,6 +14,10 @@ export default {
     `,
 
     props: {
+        title: {
+            type: String,
+            default: 'Список задач',
+        },
         name: {
             type: String,
             required: true,
