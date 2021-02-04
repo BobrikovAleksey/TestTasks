@@ -1,4 +1,4 @@
-import { Directions } from '../store/dictionary.js';
+import {Directions, ListNames} from '../store/dictionary.js';
 
 
 // noinspection JSUnresolvedFunction,JSUnresolvedVariable,JSUnusedGlobalSymbols
@@ -44,8 +44,8 @@ export default {
         },
         name: {
             type: String,
-            default: 'active',
-        }
+            required: true,
+        },
     },
 
     methods: {
@@ -54,11 +54,11 @@ export default {
         }),
 
         moveUp: function() {
-            this.move({ listName: name, deal: this.deal, direction: Directions.up });
+            this.move({ listName: this.name, deal: this.deal, direction: Directions.up });
         },
 
         moveDown: function() {
-            this.move({ listName: name, deal: this.deal, direction: Directions.down });
+            this.move({ listName: this.name, deal: this.deal, direction: Directions.down });
         },
     },
 

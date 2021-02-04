@@ -20,6 +20,12 @@ export default {
         },
     },
 
+    data: function() {
+        return {
+            listName: ListNames[this.name] ?? ListNames.active,
+        };
+    },
+
     methods: {
         ...Vuex.mapActions(['saveDealList', 'loadDealList']),
     },
@@ -29,10 +35,6 @@ export default {
             activeList: 'getActiveList',
             completeList: 'getCompleteList',
         }),
-
-        listName: function() {
-            return ListNames[this.name] ?? ListNames.active;
-        },
 
         dealList: function() {
             return this[`${this.listName}List`];

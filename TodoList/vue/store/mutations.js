@@ -34,8 +34,8 @@ export default {
     [MutationTypes.MOVE_SELF](state, { dir = 1, index, listName}) {
         const list = state[`${listName}Deals`].list;
         const tmp = list[index];
-        list[index] = list[index + dir];
-        list[index + dir] = tmp;
+        list.splice(index, 1, list[index + dir]);
+        list.splice(index + dir, 1, tmp);
     },
 
     /**
@@ -62,7 +62,7 @@ export default {
      * @param data {array}
      */
     [MutationTypes.SET_ACTIVE_LIST](state, data) {
-        state.activeDeals.list = data;
+        state.activeDeals.list = [...data];
     },
 
     /**
@@ -78,7 +78,7 @@ export default {
      * @param data {array}
      */
     [MutationTypes.SET_COMPLETE_LIST](state, data ) {
-        state.completeDeals.list = data;
+        state.completeDeals.list = [...data];
     },
 
     /**
