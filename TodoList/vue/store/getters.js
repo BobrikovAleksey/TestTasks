@@ -6,6 +6,8 @@ const getCompleteList = (state) => state.completeDeals.list;
 
 const isLoadingCompleteList = (state) => state.completeDeals.loading;
 
+const getLastInsertedId = (state) => state.lastInsertedId;
+
 export default {
     // active list
     getActiveList,
@@ -13,4 +15,6 @@ export default {
     // complete list
     getCompleteList,
     isLoadingCompleteList,
+    // other
+    getLastInsertedId,
 }

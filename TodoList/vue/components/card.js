@@ -1,4 +1,4 @@
-import {Directions, ListNames} from '../store/dictionary.js';
+import { Colors, Directions, ListNames } from '../store/dictionary.js';
 
 
 // noinspection JSUnresolvedFunction,JSUnresolvedVariable,JSUnusedGlobalSymbols
@@ -79,8 +79,10 @@ export default {
         moveToList: function() {
             if (this.name === ListNames.active) {
                 this._move({ listName: ListNames.active, deal: this.deal, direction: Directions.complete });
+                this.deal.color = Colors.success;
             } else if (this.name === ListNames.complete) {
                 this._move({ listName: ListNames.complete, deal: this.deal, direction: Directions.active });
+                this.deal.color = Colors.warning;
             }
         },
 

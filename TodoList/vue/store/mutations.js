@@ -1,6 +1,15 @@
 import { MutationTypes } from './dictionary.js';
 
 
+/**
+ * Возвращает максимальный id в массиве объектов
+ * @param list {{id: number}[]}
+ * @returns {number}
+ */
+const getMax = (list) => {
+    return list.reduceRight((max, el) => (max < el.id) ? el.id : max, 0);
+};
+
 export default {
     /**
      * Добавляет задачу
@@ -62,6 +71,7 @@ export default {
      * @param data {array}
      */
     [MutationTypes.SET_ACTIVE_LIST](state, data) {
+        state.lastInsertedId = Math.max(getMax(data), state.lastInsertedId);
         state.activeDeals.list = [...data];
     },
 
@@ -78,6 +88,7 @@ export default {
      * @param data {array}
      */
     [MutationTypes.SET_COMPLETE_LIST](state, data ) {
+        state.lastInsertedId = Math.max(getMax(data), state.lastInsertedId);
         state.completeDeals.list = [...data];
     },
 

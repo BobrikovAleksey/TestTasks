@@ -3,7 +3,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1, width=320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1, width=380">
 
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
 
@@ -19,21 +19,12 @@
             <h1>ToDo лист</h1>
         </div>
 
-        <div class="row">
-            <div class="col-lg-8">
-                <h2>Новая задача</h2>
-                <textarea maxlength="512" cols="98" rows="4"> </textarea>
-            </div>
-
-            <div class="col-lg-4">
-                <control-panel></control-panel>
-            </div>
-        </div>
+        <v-control-panel> </v-control-panel>
 
         <div class="row mt-4">
             <v-deal-list name="active" title="Активные задачи"> </v-deal-list>
 
-            <v-deal-list name="complete" title="Выполненные задачи"> </v-deal-list>
+            <v-deal-list class="mt-4 mt-xl-0 mt-lg-0" name="complete" title="Выполненные задачи"> </v-deal-list>
         </div>
     </div>
 

@@ -103,9 +103,8 @@ export default {
         const list = getList({ getters }, { listName, check: false });
         const index = deal.id ? list.findIndex((el) => el.id === deal.id) : -1;
 
-        console.log(index);
         if (index < 0) {
-            commit(MutationTypes.ADD, { listName, deal });
+            commit(MutationTypes.ADD, { listName, deal: { ...deal } });
         } else {
             commit(MutationTypes.UPDATE, { listName, index, deal });
         }
