@@ -46,7 +46,6 @@ export default {
     },
 
     created: function() {
-        this.saveDealList(this.listName);
         this.loadDealList(this.listName);
     },
 };

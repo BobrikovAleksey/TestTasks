@@ -34,6 +34,23 @@ const setLoading = ({ commit } , { listName, value = true }) => {
     return true;
 };
 
+/**
+ * Сохраняет список дел в локальное хранилище
+ * @param getters
+ * @param listName {string}
+ * @returns {boolean}
+ */
+const saveToLocalStorage = ({ getters }, listName) => {
+    if (listName === ListNames.active) {
+        localStorage.setItem(`${listName}List`, JSON.stringify(getters.getActiveList));
+        return true;
+    } else if (listName === ListNames.complete) {
+        localStorage.setItem(`${listName}List`, JSON.stringify(getters.getCompleteList));
+        return true;
+    }
+    return false;
+};
+
 
 // noinspection JSUnusedGlobalSymbols
 export default {
@@ -58,13 +75,17 @@ export default {
         if (direction === Directions.up) {
             if (!list[index-1]) return false;
             commit(MutationTypes.MOVE_SELF, { listName, index, dir: -1 });
+            saveToLocalStorage({ getters }, listName);
 
         } else if (direction === Directions.down) {
             if (!list[index+1]) return false;
             commit(MutationTypes.MOVE_SELF, { listName, index });
+            saveToLocalStorage({ getters }, listName);
 
         } else {
             commit(MutationTypes.MOVE, { sourceListName: listName, targetListName: direction, index });
+            saveToLocalStorage({ getters }, listName);
+            saveToLocalStorage({ getters }, direction);
         }
         return true;
     },
@@ -85,6 +106,7 @@ export default {
         if (index < 0) return false;
 
         commit(MutationTypes.REMOVE, { listName, index });
+        saveToLocalStorage({ getters }, listName);
         setLoading({ commit }, { listName, value: false });
         return true;
     },
@@ -108,6 +130,8 @@ export default {
         } else {
             commit(MutationTypes.UPDATE, { listName, index, deal });
         }
+
+        saveToLocalStorage({ getters }, listName);
         setLoading({ commit }, { listName, value: false });
         return index < 0 ? true : index;
     },
@@ -115,7 +139,7 @@ export default {
     /**
      * Загружает список дел из локального хранилища или устанавливает значения по умолчанию
      * @param commit
-     * @param listName { string }
+     * @param listName {string}
      */
     loadDealList({ commit }, listName) {
         if (!setLoading({ commit }, { listName })) return false;
@@ -131,18 +155,11 @@ export default {
 
     /**
      * Сохраняет список дел в локальное хранилище
-     * @param commit
-     * @param listName { string }
+     * @param getters
+     * @param listName {string}
      * @returns {boolean}
      */
     saveDealList({ getters }, listName) {
-        if (listName === ListNames.active) {
-            localStorage.setItem(`${listName}List`, JSON.stringify(getters.getActiveList));
-            return true;
-        } else if (listName === ListNames.complete) {
-            localStorage.setItem(`${listName}List`,  JSON.stringify(getters.getCompleteList));
-            return true;
-        }
-        return false;
+        return saveToLocalStorage({ getters }, listName);
     },
 };
