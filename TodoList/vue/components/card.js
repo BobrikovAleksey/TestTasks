@@ -21,11 +21,16 @@ export default {
                 </div>
 
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-info">
-                        <i class="fa fa-pencil"></i>
+                    <button type="button" class="btn btn-info" @click="openEditor">
+                        <i v-show="!editor.isVisibility" class="fa fa-pencil"></i>
+                        <i v-show="editor.isVisibility" class="fa fa-times"></i>
                     </button>
 
-                    <button type="button" class="btn btn-danger">
+                    <button v-show="editor.isVisibility" type="button" class="btn btn-info" @click="save">
+                        <i class="fa fa-check"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-danger" @click="remove">
                         <i class="fa fa-trash-o"></i>
                     </button>
                 </div>
@@ -33,6 +38,9 @@ export default {
 
             <div class="card-body" :class="colorSchema">
                 <h5 class="card-title">{{ deal.title }}</h5>
+
+                <textarea v-show="editor.isVisibility" class="w-100" maxlength="512" rows="4"
+                          v-model="editor.value"></textarea>
             </div>
         </div>
     `,
@@ -48,25 +56,52 @@ export default {
         },
     },
 
+    data: function() {
+        return {
+            editor: {
+                isVisibility: false,
+                value: this.deal.title,
+            },
+        };
+    },
+
     methods: {
         ...Vuex.mapActions({
-            move: 'moveDeal',
+            _move: 'moveDeal',
+            _remove: 'removeDeal',
+            _save: 'saveDeal',
         }),
 
-        moveUp: function() {
-            this.move({ listName: this.name, deal: this.deal, direction: Directions.up });
-        },
-
         moveDown: function() {
-            this.move({ listName: this.name, deal: this.deal, direction: Directions.down });
+            this._move({ listName: this.name, deal: this.deal, direction: Directions.down });
         },
 
         moveToList: function() {
             if (this.name === ListNames.active) {
-                this.move({ listName: ListNames.active, deal: this.deal, direction: Directions.complete });
+                this._move({ listName: ListNames.active, deal: this.deal, direction: Directions.complete });
             } else if (this.name === ListNames.complete) {
-                this.move({ listName: ListNames.complete, deal: this.deal, direction: Directions.active });
+                this._move({ listName: ListNames.complete, deal: this.deal, direction: Directions.active });
             }
+        },
+
+        moveUp: function() {
+            this._move({ listName: this.name, deal: this.deal, direction: Directions.up });
+        },
+
+        openEditor: function() {
+            this.editor.isVisibility = !this.editor.isVisibility;
+            if (!this.editor.isVisibility) this.editor.value = this.deal.title;
+        },
+
+        remove: function() {
+            this._remove({ listName: this.name, deal: this.deal });
+        },
+
+        save: function() {
+            const newDeal = { ...this.deal };
+            newDeal.title = this.editor.value;
+            this._save({ listName: this.name, deal: newDeal });
+            this.editor.isVisibility = false;
         },
     },
 

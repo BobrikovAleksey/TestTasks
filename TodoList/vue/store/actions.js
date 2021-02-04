@@ -81,7 +81,7 @@ export default {
         if (!setLoading({ commit }, { listName })) return false;
 
         const list = getList({ getters }, { listName, check: false });
-        const index = deal.id ? list.findIndex((el) => el.id === deal.id) < 0 : -1;
+        const index = deal.id ? list.findIndex((el) => el.id === deal.id) : -1;
         if (index < 0) return false;
 
         commit(MutationTypes.REMOVE, { listName, index });
@@ -101,7 +101,9 @@ export default {
         if (!setLoading({ commit }, { listName })) return false;
 
         const list = getList({ getters }, { listName, check: false });
-        const index = deal.id ? list.findIndex((el) => el.id === deal.id) < 0 : -1;
+        const index = deal.id ? list.findIndex((el) => el.id === deal.id) : -1;
+
+        console.log(index);
         if (index < 0) {
             commit(MutationTypes.ADD, { listName, deal });
         } else {

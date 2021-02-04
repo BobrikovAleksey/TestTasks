@@ -54,7 +54,7 @@ export default {
      * @param listName {string}
      */
     [MutationTypes.UPDATE](state, { deal, index, listName} ) {
-        state[`${listName}Deals`].list[index] = deal;
+        state[`${listName}Deals`].list.splice(index, 1, deal);
     },
 
     /**
