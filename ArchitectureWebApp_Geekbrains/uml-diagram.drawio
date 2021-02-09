@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-09T19:07:18.860Z" agent="5.0 (Windows)" etag="_lOTfUZBA0NwegXsJqcv" version="14.2.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-09T19:11:55.556Z" agent="5.0 (Windows)" etag="8pbkX8YfRVf-nwudcXt3" version="14.2.9" type="github">
   <diagram id="LtXfjdiNlztNddyJYRsl" name="Page-1">
     <mxGraphModel dx="1422" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -275,7 +275,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-101" value="Entity \ User (EUser)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#ffffff;sketch=0;strokeColor=#000000;fillColor=#ffffff;gradientColor=none;" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-101" value="Entity \ User (EUser)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#ffffff;sketch=0;strokeColor=#000000;fillColor=#ffffff;gradientColor=none;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="40" y="850" width="240" height="210" as="geometry">
             <mxRectangle x="40" y="840" width="200" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -289,7 +289,7 @@
         <mxCell id="3RHrD-StrAHebshTQser-104" value="+ getId(): int&#xa;+ getName(): string&#xa;+ getLogin(): string&#xa;+ getPasswordHash(): string&#xa;+ getRole(): Role&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="3RHrD-StrAHebshTQser-101">
           <mxGeometry y="118" width="240" height="92" as="geometry" />
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-105" value="Entity \ Role" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fillColor=#ffffff;gradientColor=none;" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-105" value="Entity \ Role" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fillColor=#ffffff;gradientColor=none;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="40" y="660" width="240" height="150" as="geometry">
             <mxRectangle x="40" y="660" width="200" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -309,10 +309,10 @@
             <mxPoint x="320" y="830" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-112" value="Диаграмма приложения" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;fontSize=18;fontStyle=2" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-112" value="Диаграмма приложения" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;sketch=0;fontSize=18;fontStyle=2" vertex="1" parent="1">
           <mxGeometry x="41" y="20" width="239" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-113" value="Диаграммы классов" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;fontSize=18;fontStyle=2" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-113" value="Диаграммы классов" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;sketch=0;fontSize=18;fontStyle=2;labelBorderColor=none;" vertex="1" parent="1">
           <mxGeometry x="42" y="600" width="239" height="40" as="geometry" />
         </mxCell>
         <mxCell id="3RHrD-StrAHebshTQser-120" value="" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;entryX=1.015;entryY=0.298;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.338;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="3RHrD-StrAHebshTQser-131" target="3RHrD-StrAHebshTQser-102">
@@ -321,15 +321,15 @@
             <mxPoint x="340" y="1060" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-124" value="Interface Security" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fontSize=12;align=center;" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-124" value="Interface Security" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fontSize=12;align=center;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="690" y="990" width="250" height="100" as="geometry">
             <mxRectangle x="320" y="1080" width="210" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-125" value="+ getUser(): EUser&#xa;+ authentication(string, string): bool&#xa;+ isLogged(): bool&#xa;+ logout(): void&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="3RHrD-StrAHebshTQser-124">
+        <mxCell id="3RHrD-StrAHebshTQser-125" value="+ getUser(): EUser&#xa;+ authentication(string, string): bool&#xa;+ isLogged(): bool&#xa;+ logout(): void&#xa;&#xa;&#xa;" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="3RHrD-StrAHebshTQser-124">
           <mxGeometry y="26" width="250" height="74" as="geometry" />
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-130" value="Repository \ User (RUser)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fontSize=12;align=center;" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-130" value="Repository \ User (RUser)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fontSize=12;align=center;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="360" y="850" width="250" height="100" as="geometry">
             <mxRectangle x="300" y="850" width="210" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -337,7 +337,7 @@
         <mxCell id="3RHrD-StrAHebshTQser-131" value="+ getById(int): EUser&#xa;+ getByLogin(string): EUser&#xa;+ createUser(array): EUser&#xa;+ getDataFromSource(array): array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="3RHrD-StrAHebshTQser-130">
           <mxGeometry y="26" width="250" height="74" as="geometry" />
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-132" value="Service \ Security" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#ffffff;sketch=0;strokeColor=#000000;fillColor=#ffffff;gradientColor=none;" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-132" value="Service \ Security" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#ffffff;sketch=0;strokeColor=#000000;gradientColor=none;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="360" y="990" width="250" height="160" as="geometry">
             <mxRectangle x="320" y="840" width="210" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -369,7 +369,7 @@
             <mxPoint x="300" y="1028.996" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-144" value="UserController" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fontSize=12;align=center;" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-144" value="UserController" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fontSize=12;align=center;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="360" y="1190" width="250" height="70" as="geometry">
             <mxRectangle x="280" y="1330" width="250" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -377,12 +377,12 @@
         <mxCell id="3RHrD-StrAHebshTQser-145" value="+ authenticationAction(Request): Response&#xa;+ logoutAction(Request): Response" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="3RHrD-StrAHebshTQser-144">
           <mxGeometry y="26" width="250" height="44" as="geometry" />
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-146" value="Interface HTMLConverter" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fontSize=12;align=center;" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-146" value="Interface HTMLConverter" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fontSize=12;align=center;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="680" y="1190" width="250" height="60" as="geometry">
             <mxRectangle x="320" y="1080" width="210" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-147" value="+ Render()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="3RHrD-StrAHebshTQser-146">
+        <mxCell id="3RHrD-StrAHebshTQser-147" value="+ Render()" style="text;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="3RHrD-StrAHebshTQser-146">
           <mxGeometry y="26" width="250" height="34" as="geometry" />
         </mxCell>
         <mxCell id="3RHrD-StrAHebshTQser-148" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;fontSize=12;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.008;exitY=0.091;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="3RHrD-StrAHebshTQser-145" target="3RHrD-StrAHebshTQser-146">
@@ -397,7 +397,7 @@
             <mxPoint x="485" y="950" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="3RHrD-StrAHebshTQser-150" value="Диаграммы последовательностей" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;fontSize=18;fontStyle=2" vertex="1" parent="1">
+        <mxCell id="3RHrD-StrAHebshTQser-150" value="Диаграммы последовательностей" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;labelBackgroundColor=none;sketch=0;fontSize=18;fontStyle=2" vertex="1" parent="1">
           <mxGeometry x="40" y="1300" width="360" height="40" as="geometry" />
         </mxCell>
         <mxCell id="3RHrD-StrAHebshTQser-151" value="UserController" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;glass=0;labelBackgroundColor=#FFFFFF;sketch=0;strokeColor=#000000;fillColor=#ffffff;gradientColor=none;fontSize=12;align=center;fontStyle=1" vertex="1" parent="1">
