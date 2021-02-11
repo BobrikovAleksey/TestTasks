@@ -1,6 +1,6 @@
 # Решение #
 
-1. Решение первого задания: [Word-файл](https://github.com/BobrikovAleksey/TestTasks/blob/master/TicketPriceCalculate_Nevatrip/Test%20Task%20%E2%84%961.docx?raw=true)
+1. Решение первого задания: [Word-файл](https://github.com/BobrikovAleksey/TestTasks/blob/master/TicketPriceCalculate_Nevatrip/Task%20Task%20%E2%84%961.docx?raw=true)
 2. Решение второго задания: [Application](https://bobrikovaleksey.github.io/TestTasks/TicketPriceCalculate_Nevatrip/)
 
 # Тестовое задание #
