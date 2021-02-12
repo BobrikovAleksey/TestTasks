@@ -1,4 +1,4 @@
-# blind-printing-simulator
+# project
 
 ## Project setup
 ```
