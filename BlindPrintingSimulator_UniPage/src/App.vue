@@ -39,8 +39,9 @@ export default {
 }
 
 body {
-  font-size: 14px;
   font-family: "Microsoft YaHei", sans-serif;
+  color: #5C5C5C;
+  font-size: 14px;
 }
 
 a {

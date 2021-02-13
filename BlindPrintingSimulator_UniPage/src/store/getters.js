@@ -1,5 +1,7 @@
-const getTextValue = (state) => state.text.value;
+const getTextValue = (state) => state.text.value.split('');
+
 const getTextError = (state) => state.text.error;
+
 const isLoadingText = (state) => state.text.isLoading;
 
 export default {
