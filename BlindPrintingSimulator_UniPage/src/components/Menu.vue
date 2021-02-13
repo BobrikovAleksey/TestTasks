@@ -5,8 +5,8 @@
       <router-link to="/">ОБУЧЕНИЕ</router-link>
     </el-menu-item>
 
-    <el-menu-item index="about" route="/test">
-      <router-link to="/test">ТЕСТИРОВАНИЕ</router-link>
+    <el-menu-item index="about" route="/testing">
+      <router-link to="/testing">ТЕСТИРОВАНИЕ</router-link>
     </el-menu-item>
   </el-menu>
 </template>

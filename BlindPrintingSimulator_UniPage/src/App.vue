@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Footer from './components/Footer.vue';
-import Menu from './components/header/Menu.vue';
+import Footer from '@/components/Footer.vue';
+import Menu from '@/components/Menu.vue';
 
 export default {
   components: {
@@ -63,6 +63,7 @@ h3 {
 }
 
 .site {
+  min-width: 768px;
   min-height: 100vh;
 }
 
