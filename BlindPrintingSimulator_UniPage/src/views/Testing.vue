@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import TestingField from '@/components/TestingField.vue';
+import TestingField from '@/components/testing/TestingField.vue';
 
 export default {
   name: 'Testing',

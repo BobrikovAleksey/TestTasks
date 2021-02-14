@@ -1,5 +1,5 @@
 const numbers = {
-  sentence: 7, // [ 1 .. 500 ]
+  sentence: 6, // [ 1 .. 500 ]
   paragraph: 3, // [ 1 .. 100 ]
   title: 1, // [ 1 .. 500 ]
 };
