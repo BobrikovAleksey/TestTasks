@@ -22,9 +22,6 @@ export default {
     Footer,
     Menu,
   },
-  props: {
-    msg: String,
-  },
 };
 </script>
 
@@ -41,7 +38,7 @@ export default {
 body {
   font-family: "Microsoft YaHei", sans-serif;
   color: #5C5C5C;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 a {
@@ -50,21 +47,21 @@ a {
 
 h1 {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 h2 {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 h3 {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .site {
-  min-width: 768px;
+  min-width: 1024px;
   min-height: 100vh;
 }
 

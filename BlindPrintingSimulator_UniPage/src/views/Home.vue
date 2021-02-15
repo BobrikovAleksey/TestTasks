@@ -8,7 +8,7 @@
       памяти, все твои десять пальцев будут знать, куда нажать.
     </p>
 
-    <el-collapse accordion v-model="activeName">
+    <el-collapse accordion v-model="activeItem">
       <el-collapse-item title="Поза при печати текста" name="1">
         <el-row>
           <el-col :span="8">
@@ -135,7 +135,9 @@
     </el-collapse>
 
     <el-row>
-      <el-button class="button home__button" type="info" plain>Пора потренироваться</el-button>
+      <el-button class="button home__button" type="warning" plain @click="goToTesting">
+        Пора потренироваться
+      </el-button>
     </el-row>
   </div>
 </template>
@@ -143,9 +145,16 @@
 <script>
 export default {
   name: 'Home',
+
   data: () => ({
-    activeName: '6',
+    activeItem: '6',
   }),
+
+  methods: {
+    goToTesting() {
+      this.$router.push('/testing');
+    },
+  },
 };
 </script>
 
@@ -156,6 +165,7 @@ export default {
   }
 
   &__description {
+    width: 100%;
     margin-bottom: 32px;
   }
 
@@ -170,6 +180,7 @@ export default {
   }
 
   &__text {
+    width: 100%;
     margin-top: 10px;
   }
 
@@ -179,12 +190,14 @@ export default {
 
   &__fingers-image img {
     width: auto;
-    max-height: 125px;
+    max-height: 150px;
+    margin-bottom: 32px;
   }
 
   &__keyboard-image img {
     width: auto;
     max-height: 250px;
+    margin-bottom: 32px;
   }
 
   &__man-image img {
@@ -200,12 +213,12 @@ export default {
 
 .el-collapse-item {
   &__header {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
   }
 
   &__content {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 

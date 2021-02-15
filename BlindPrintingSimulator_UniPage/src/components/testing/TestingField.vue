@@ -8,7 +8,7 @@
     </el-col>
 
     <el-col class="display__column" :span="4">
-      {{ getAccuracy }}, {{ getCharPerMinute }}
+      {{ getAccuracy }}, {{ getSpeed }}
     </el-col>
   </div>
 </template>
@@ -132,7 +132,7 @@ export default {
       return this.timer.end - this.timer.start;
     },
 
-    getCharPerMinute() {
+    getSpeed() {
       return this.getTimer > 0 ? (this.activeChar / this.getTimer) * 60000 : 0;
     },
   },
