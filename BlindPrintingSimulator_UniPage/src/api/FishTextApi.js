@@ -42,6 +42,7 @@ const getValue = ({ text }) => text;
 export default {
   url: 'https://fish-text.ru/get',
   params: `${types.sentence}&format=${formats.json}`,
+  numbers,
   getError,
   getStatus,
   getValue,

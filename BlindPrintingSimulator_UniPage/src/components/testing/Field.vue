@@ -1,28 +1,28 @@
 <template>
-  <div class="testing-field">
-    <el-col class="testing-field__column testing-field__text" :span="20">
-      <span class="testing-field__char" v-for="(chr, i) in text" :key="i"
-            :class="{ 'testing-field__char_active': activeChar === i,
-                      'testing-field__char_complete': activeChar > i,
-                      'testing-field__char_mistake': activeChar === i & mistake.check }">
-        {{ chr }}
+  <div class="test-field">
+    <el-col class="test-field__column test-field__test-text" :span="20">
+      <span class="test-field__char" v-for="(char, index) in text" :key="index"
+            :class="{ 'test-field__char_active': activeChar === index,
+                      'test-field__char_complete': activeChar > index,
+                      'test-field__char_mistake': activeChar === index & mistake.check }">
+        {{ char }}
       </span>
     </el-col>
 
-    <el-col class="testing-field__column testing-field__column_right" :span="4">
-      <h3 class="testing-field__label">Скорость</h3>
+    <el-col class="test-field__column test-field__column_right" :span="4">
+      <h3 class="test-field__label test-field__label_timer">Скорость</h3>
 
-      <p class="testing-field__value">{{ getSpeedAsStr }} <span>зн./мин</span></p>
+      <p class="test-field__value">{{ getSpeedAsStr }} <span>зн./мин</span></p>
 
-      <h3 class="testing-field__label testing-field__label_top">Точность</h3>
+      <h3 class="test-field__label test-field__label_target">Точность</h3>
 
-      <p class="testing-field__value">{{ getAccuracyAsStr }}</p>
+      <p class="test-field__value">{{ getAccuracyAsStr }}</p>
 
-      <el-progress class="testing-field__progress" type="dashboard" :stroke-width="8"
-                   :status="getPercentage === 100 && 'success' || ''"
-                   :percentage="getPercentage" :color="colors"></el-progress>
+      <el-progress class="test-field__progress" type="dashboard" :stroke-width="8"
+                   :percentage="getPercentage" :color="colors"
+                   :status="getPercentage === 100 && 'success' || ''"></el-progress>
 
-      <el-button class="testing-field__refresh" type="warning" icon="el-icon-refresh-right"
+      <el-button class="test-field__refresh" type="warning" icon="el-icon-refresh-right"
                  :loading="isLoading" @click="refreshTest">
         {{ isLoading && 'Обновление' || 'Заново' }}
       </el-button>
@@ -33,8 +33,9 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
+// noinspection JSUnusedGlobalSymbols
 export default {
-  name: 'TestingField',
+  name: 'Field',
 
   props: {
     isTest: {
@@ -46,11 +47,11 @@ export default {
   data() {
     return {
       activeChar: 0,
-      isWarningLanguage: false,
       colors: [
         { color: '#E6A23C', percentage: 99 },
         { color: '#67C23A', percentage: 100 },
       ],
+      isWarningLanguage: false,
       mistake: {
         check: false,
         counter: 0,
@@ -199,61 +200,15 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.testing-field {
+<!--suppress CssUnknownTarget -->
+<style lang="scss">
+.test-field {
   width: 100%;
   max-width: 1024px;
   min-height: 256px;
   border-radius: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   margin: 0 auto;
-
-  &__column {
-    width: 100%;
-    padding: 24px 48px;
-
-    &_right {
-      min-width: 150px;
-      padding-left: 0;
-      padding-right: 24px;
-    }
-  }
-
-  &__label {
-    color: #909399;
-    text-transform: uppercase;
-
-    &_top {
-      margin-top: 16px;
-    }
-  }
-
-  &__progress {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 24px;
-  }
-
-  &__refresh {
-    width: 100%;
-    margin-top: 24px;
-  }
-
-  &__text {
-    font-size: 21px;
-    line-height: 32px;
-  }
-
-  &__value {
-    font-size: 32px;
-
-    span {
-      font-size: 0.5em;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-  }
 
   &__char {
     border-width: 1px;
@@ -274,6 +229,81 @@ export default {
     &_mistake {
       background: rgba(#F36747, 0.8);
       border-color: #F36747;
+    }
+  }
+
+  &__column {
+    width: 100%;
+    padding: 24px 48px;
+
+    &_right {
+      min-width: 150px;
+      padding-left: 0;
+      padding-right: 24px;
+    }
+  }
+
+  &__label {
+    color: #909399;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+
+    &:before {
+      content: "";
+      width: 23px;
+      height: 23px;
+      display: inline-block;
+      padding-right: 10px;
+    }
+
+    &_timer:before {
+      background: url("/images/icons/i-timer.png") no-repeat;
+    }
+
+    &_target {
+      margin-top: 16px;
+
+      &:before {
+        background: url("/images/icons/i-target.png") no-repeat;
+      }
+    }
+  }
+
+  &__progress {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+
+    .el-progress__text span {
+      color: #909399;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .el-icon-check {
+      font-size: 32px;
+    }
+  }
+
+  &__refresh {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  &__test-text {
+    font-size: 21px;
+    line-height: 32px;
+  }
+
+  &__value {
+    font-size: 28px;
+
+    span {
+      font-size: 0.5em;
+      font-weight: 600;
+      text-transform: uppercase;
     }
   }
 }
