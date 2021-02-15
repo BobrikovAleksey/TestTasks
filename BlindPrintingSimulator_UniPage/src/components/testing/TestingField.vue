@@ -1,14 +1,31 @@
 <template>
-  <div class="display">
-    <el-col class="display__column display__text" :span="20">
-      <span class="display__char" v-for="(chr, i) in text" :key="i"
-            :class="{ display__char_active: activeChar === i,
-                      display__char_complete: activeChar > i,
-                      display__char_mistake: activeChar === i & mistake.check }">{{ chr }}</span>
+  <div class="testing-field">
+    <el-col class="testing-field__column testing-field__text" :span="20">
+      <span class="testing-field__char" v-for="(chr, i) in text" :key="i"
+            :class="{ 'testing-field__char_active': activeChar === i,
+                      'testing-field__char_complete': activeChar > i,
+                      'testing-field__char_mistake': activeChar === i & mistake.check }">
+        {{ chr }}
+      </span>
     </el-col>
 
-    <el-col class="display__column" :span="4">
-      {{ getAccuracy }}, {{ getSpeed }}
+    <el-col class="testing-field__column testing-field__column_right" :span="4">
+      <h3 class="testing-field__label">Скорость</h3>
+
+      <p class="testing-field__value">{{ getSpeedAsStr }} <span>зн./мин</span></p>
+
+      <h3 class="testing-field__label testing-field__label_top">Точность</h3>
+
+      <p class="testing-field__value">{{ getAccuracyAsStr }}</p>
+
+      <el-progress class="testing-field__progress" type="dashboard" :stroke-width="8"
+                   :status="getPercentage === 100 && 'success' || ''"
+                   :percentage="getPercentage" :color="colors"></el-progress>
+
+      <el-button class="testing-field__refresh" type="warning" icon="el-icon-refresh-right"
+                 :loading="isLoading" @click="refreshTest">
+        {{ isLoading && 'Обновление' || 'Заново' }}
+      </el-button>
     </el-col>
   </div>
 </template>
@@ -19,10 +36,21 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'TestingField',
 
+  props: {
+    isTest: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
   data() {
     return {
       activeChar: 0,
       isWarningLanguage: false,
+      colors: [
+        { color: '#E6A23C', percentage: 99 },
+        { color: '#67C23A', percentage: 100 },
+      ],
       mistake: {
         check: false,
         counter: 0,
@@ -65,16 +93,16 @@ export default {
      * Обрабатывает нажатие клавиши в документе (навешивается на document через bind(this))
      */
     handleKeyDownForBind(event) {
-      if (this.activeChar >= this.text.length || event.key.length > 1) return;
+      if (!this.isTest
+        || this.activeChar >= this.text.length
+        || event.key.length > 1) return;
 
       if (/[A-Za-z]{1}/.test(event.key)) {
         this.getWarningLanguage();
         return;
       }
 
-      if (!this.timer.id) {
-        this.startTimer();
-      }
+      if (!this.timer.id) this.startTimer();
 
       if (event.key === this.text[this.activeChar]
         || (this.text[this.activeChar] === 'ё' && event.key === 'е')) {
@@ -95,6 +123,12 @@ export default {
      */
     tikTakForBind() {
       this.timer.end = new Date();
+    },
+
+    refreshTest() {
+      this.activeChar = 0;
+      this.stopTimer();
+      this.fetchText();
     },
 
     /**
@@ -125,7 +159,18 @@ export default {
     }),
 
     getAccuracy() {
-      return (this.text.length - this.mistake.counter) / this.text.length;
+      const result = (this.text.length - this.mistake.counter) / this.text.length;
+      return result && !Number.isNaN(result) && Number.isFinite(result) ? result : 1;
+    },
+
+    getAccuracyAsStr() {
+      return `${Math.floor(this.getAccuracy * 1000) / 10}%`;
+    },
+
+    getPercentage() {
+      const result = this.activeChar / this.text.length;
+      return result && !Number.isNaN(result) && Number.isFinite(result)
+        ? Math.floor(result * 100) : 0;
     },
 
     getTimer() {
@@ -133,7 +178,12 @@ export default {
     },
 
     getSpeed() {
-      return this.getTimer > 0 ? (this.activeChar / this.getTimer) * 60000 : 0;
+      const result = (this.activeChar / this.getTimer) * 60000;
+      return result && !Number.isNaN(result) && Number.isFinite(result) ? result : 0;
+    },
+
+    getSpeedAsStr() {
+      return `${Math.floor(this.getSpeed)}`;
     },
   },
 
@@ -141,24 +191,68 @@ export default {
     this.fetchText();
     document.addEventListener('keydown', this.handleKeyDown);
   },
+
+  unmounted() {
+    this.stopTimer();
+    document.removeEventListener('keydown', this.handleKeyDown);
+  },
 };
 </script>
 
 <style scoped lang="scss">
-.display {
+.testing-field {
+  width: 100%;
   max-width: 1024px;
+  min-height: 256px;
   border-radius: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   margin: 0 auto;
 
   &__column {
-    padding: 24px;
+    width: 100%;
+    padding: 24px 48px;
+
+    &_right {
+      min-width: 150px;
+      padding-left: 0;
+      padding-right: 24px;
+    }
+  }
+
+  &__label {
+    color: #909399;
+    text-transform: uppercase;
+
+    &_top {
+      margin-top: 16px;
+    }
+  }
+
+  &__progress {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  &__refresh {
+    width: 100%;
+    margin-top: 24px;
   }
 
   &__text {
     font-size: 21px;
     line-height: 32px;
-    padding-left: 48px;
+  }
+
+  &__value {
+    font-size: 32px;
+
+    span {
+      font-size: 0.5em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
   }
 
   &__char {

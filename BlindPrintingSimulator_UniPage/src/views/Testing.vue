@@ -97,7 +97,7 @@
 
     <div v-show="isTest">
       <el-row>
-        <TestingField :isTest="this.isTest"></TestingField>
+        <TestingField :isTest="isTest"></TestingField>
       </el-row>
 
       <el-row>
@@ -148,8 +148,12 @@ export default {
     },
   },
 
+  mounted() {
+    //
+  },
+
   updated() {
-    console.log('update');
+    //
   },
 };
 </script>
