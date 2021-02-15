@@ -1,5 +1,13 @@
 /**
  * @param state
+ * @param value { number }
+ */
+const SET_API_TEXT_COUNT = (state, value) => {
+  state.api.number = value;
+};
+
+/**
+ * @param state
  * @constructor
  */
 const SET_TEXT_LOADING = (state) => {
@@ -37,6 +45,7 @@ const SET_TEXT_VALUE = (state, text) => {
 };
 
 export default {
+  SET_API_TEXT_COUNT,
   SET_TEXT_LOADING,
   SET_TEXT_ERROR,
   SET_TEXT_VALUE,
