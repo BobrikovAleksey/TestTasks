@@ -1,12 +1,27 @@
 <template>
   <div class="test-field">
-    <el-col class="test-field__column test-field__test-text" :span="20">
+    <el-col class="test-field__column test-field__test-text" :span="20" v-show="!isSuccess">
       <span class="test-field__char" v-for="(char, index) in text" :key="index"
             :class="{ 'test-field__char_active': activeChar === index,
                       'test-field__char_complete': activeChar > index,
                       'test-field__char_mistake': activeChar === index & mistake.check }">
         {{ char }}
       </span>
+    </el-col>
+
+    <el-col class="test-field__column test-field__test-text" :span="20" v-show="isSuccess">
+      <el-table class="test-field__table" :row-class-name="rowClassName" :data="stats"
+                :empty-text="'Нет данных'">
+        <el-table-column prop="certificate" label="сертификат"></el-table-column>
+        <el-table-column prop="speed" label="скорость"></el-table-column>
+        <el-table-column prop="accuracy.string" label="точность"></el-table-column>
+        <el-table-column prop="textLength" label="длина текста"></el-table-column>
+      </el-table>
+
+      <el-row>
+        <el-button class="test-field__clear" type="warning" icon="el-icon-delete"
+                   @click="clear">{{ 'Удалить статистику' }}</el-button>
+      </el-row>
     </el-col>
 
     <el-col class="test-field__column test-field__column_right" :span="4">
@@ -20,7 +35,7 @@
 
       <el-progress class="test-field__progress" type="dashboard" :stroke-width="8"
                    :percentage="getPercentage" :color="colors"
-                   :status="getPercentage === 100 && 'success' || ''"></el-progress>
+                   :status="isSuccess && 'success' || ''"></el-progress>
 
       <el-button class="test-field__refresh" type="warning" icon="el-icon-refresh-right"
                  :loading="isLoading" @click="refreshTest">
@@ -70,7 +85,21 @@ export default {
   methods: {
     ...mapActions({
       fetchText: 'fetchText',
+      loadStats: 'loadStats',
+      pushToStats: 'addItemToStats',
+      clearStats: 'clearStats',
+      saveToStorage: 'saveStats',
     }),
+
+    rowClassName: ({ rowIndex }) => {
+      if (rowIndex === 0) return 'test-field__table-row test-field__table-row_avg';
+      return 'test-field__table-row';
+    },
+
+    clear() {
+      this.clearStats();
+      this.loadStats();
+    },
 
     /**
      * Выводит сообщение об ошибке с раскладкой
@@ -88,6 +117,23 @@ export default {
       });
 
       this.isWarningLanguage = true;
+    },
+
+    getCertificate() {
+      if (this.getSpeed >= 350) return 'platinum';
+      if (this.getSpeed >= 250) return 'gold';
+      if (this.getSpeed >= 200) return 'silver';
+      return 'none';
+    },
+
+    saveStats() {
+      this.pushToStats({
+        certificate: this.getCertificate(),
+        speed: this.getSpeed,
+        accuracy: this.getAccuracy,
+        textLength: this.text.length,
+      });
+      this.saveToStorage();
     },
 
     /**
@@ -109,7 +155,10 @@ export default {
         || (this.text[this.activeChar] === 'ё' && event.key === 'е')) {
         this.activeChar += 1;
         this.mistake.check = false;
-        if (this.activeChar === this.text.length) this.stopTimer();
+        if (this.activeChar === this.text.length) {
+          this.stopTimer();
+          this.saveStats();
+        }
         return;
       }
 
@@ -128,6 +177,7 @@ export default {
 
     refreshTest() {
       this.activeChar = 0;
+      this.mistake = { check: false, counter: 0 };
       this.stopTimer();
       this.fetchText();
     },
@@ -154,6 +204,7 @@ export default {
 
   computed: {
     ...mapGetters({
+      stats: 'getStats',
       text: 'getTextValue',
       error: 'getTextError',
       isLoading: 'isLoadingText',
@@ -186,10 +237,15 @@ export default {
     getSpeedAsStr() {
       return `${Math.floor(this.getSpeed)}`;
     },
+
+    isSuccess() {
+      return this.getPercentage === 100;
+    },
   },
 
   mounted() {
     this.fetchText();
+    this.loadStats();
     document.addEventListener('keydown', this.handleKeyDown);
   },
 
@@ -230,6 +286,10 @@ export default {
       background: rgba(#F36747, 0.8);
       border-color: #F36747;
     }
+  }
+
+  &__clear {
+    margin: 24px auto 0;
   }
 
   &__column {
@@ -306,5 +366,62 @@ export default {
       text-transform: uppercase;
     }
   }
+}
+
+.test-field__table {
+  max-width: 680px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 auto;
+
+  & .is-leaf .cell {
+    display: flex;
+    align-items: center;
+  }
+
+  & .is-leaf:not(:first-of-type) .cell {
+    text-align: right;
+  }
+
+  & .is-leaf .cell:before {
+    content: "";
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+    padding-right: 10px;
+  }
+
+  & .is-leaf:nth-of-type(1) .cell:before {
+    background: url("/images/icons/i-certificate.png") no-repeat;
+  }
+
+  & .is-leaf:not(:first-of-type) .cell {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  & .is-leaf:nth-of-type(2) .cell:before {
+    background: url("/images/icons/i-timer.png") no-repeat;
+  }
+
+  & .is-leaf:nth-of-type(3) .cell:before {
+    background: url("/images/icons/i-target.png") no-repeat;
+  }
+
+  & .cell {
+    display: flex;
+    align-items: center;
+  }
+
+  &-row {
+    & td:not(:first-of-type) .cell {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.el-table .test-field__table-row_avg {
+  background: oldlace;
 }
 </style>

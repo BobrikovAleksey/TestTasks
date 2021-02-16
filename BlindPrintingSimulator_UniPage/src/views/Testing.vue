@@ -11,7 +11,8 @@
         <div class="testing__settings">
           <p>Количество предложений</p>
 
-          <el-slider :step="1" :min="3" :max="7" show-stops v-model="volume"></el-slider>
+          <el-slider :step="1" :min="1" :max="6" show-stops v-model="volume"
+                     @change="handleChangeVolume"></el-slider>
         </div>
       </el-row>
     </div>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import vContent from '@/components/testing/Content.vue';
 import vField from '@/components/testing/Field.vue';
 
@@ -33,14 +35,36 @@ export default {
   data() {
     return {
       isTest: false,
-      volume: 5,
+      volume: 3,
     };
   },
 
   methods: {
+    ...mapActions({
+      fetchText: 'fetchText',
+      setTextCount: 'setApiTextCount',
+    }),
+
+    handleChangeVolume() {
+      if (this.getVolume === this.volume) return;
+
+      this.setTextCount(this.volume);
+      this.fetchText();
+    },
+
     goToTest() {
       this.isTest = true;
     },
+  },
+
+  computed: {
+    ...mapGetters({
+      getVolume: 'getApiCount',
+    }),
+  },
+
+  created() {
+    this.volume = this.getVolume;
   },
 };
 </script>

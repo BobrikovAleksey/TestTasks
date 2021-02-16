@@ -11,6 +11,16 @@ const getImages = () => ({
   certificates: `${process.env.BASE_URL}images/certificates.png`,
 });
 
+const getStats = (state) => state.stats.list;
+
+// accuracy: {
+//   value: (item.accuracy + accuracy) / counter,
+//     string: `${Math.floor(((item.accuracy + accuracy) / counter) * 1000) / 10}%`,
+// },
+// certificate: 'average',
+//   speed: (item.speed + speed) / counter,
+//   textLength: (item.textLength + textLength) / textLength,
+
 const getTextValue = (state) => state.text.value.split('');
 
 const getTextError = (state) => state.text.error;
@@ -22,6 +32,7 @@ export default {
   getApiUrl,
   getApiQuery,
   getImages,
+  getStats,
   getTextValue,
   getTextError,
   isLoadingText,

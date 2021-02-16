@@ -23,7 +23,7 @@
 
     <el-row>
       <el-col :span="13">
-        <el-table class="test-content__table" :row-class-name="tableRowClassName"
+        <el-table class="test-content__table" :row-class-name="rowClassName"
                   :data="certificates">
           <el-table-column prop="certificate" label="сертификат"></el-table-column>
           <el-table-column prop="speed" label="скорость"></el-table-column>
@@ -133,7 +133,7 @@ export default {
   },
 
   methods: {
-    tableRowClassName: ({ rowIndex }) => `testing__table-row testing__table-row_${rowIndex}`,
+    rowClassName: ({ rowIndex }) => `test-content__table-row test-content__table-row_${rowIndex}`,
   },
 
   computed: {
@@ -199,7 +199,7 @@ export default {
       background: url("/images/icons/i-certificate.png") no-repeat;
     }
 
-    & .is-leaf:nth-of-type(2) .cell, & .is-leaf:nth-of-type(3) .cell {
+    & .is-leaf:not(:first-of-type) .cell {
       display: flex;
       justify-content: flex-end;
     }
@@ -227,7 +227,7 @@ export default {
       padding-right: 10px;
     }
 
-    & td:nth-of-type(2) .cell, & td:nth-of-type(3) .cell {
+    & td:not(:first-of-type) .cell {
       display: flex;
       justify-content: flex-end;
     }
