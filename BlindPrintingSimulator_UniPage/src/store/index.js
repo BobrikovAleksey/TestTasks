@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import history from './history';
 import mutations from './mutations';
 import actions from './actions';
 import getters from './getters';
@@ -46,4 +47,7 @@ export default createStore({
   mutations,
   actions,
   getters,
+  modules: {
+    history,
+  },
 });

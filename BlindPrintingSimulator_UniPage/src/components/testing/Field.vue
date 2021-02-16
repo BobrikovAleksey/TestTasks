@@ -10,11 +10,11 @@
     </el-col>
 
     <el-col class="test-field__column test-field__test-text" :span="20" v-show="isSuccess">
-      <el-table class="test-field__table" :row-class-name="rowClassName" :data="stats"
+      <el-table class="test-field__table" :row-class-name="rowClassName" :data="history"
                 :empty-text="'Нет данных'">
         <el-table-column prop="certificate" label="сертификат"></el-table-column>
         <el-table-column prop="speed" label="скорость"></el-table-column>
-        <el-table-column prop="accuracy.string" label="точность"></el-table-column>
+        <el-table-column prop="accuracy" label="точность"></el-table-column>
         <el-table-column prop="textLength" label="длина текста"></el-table-column>
       </el-table>
 
@@ -85,10 +85,10 @@ export default {
   methods: {
     ...mapActions({
       fetchText: 'fetchText',
-      loadStats: 'loadStats',
-      pushToStats: 'addItemToStats',
-      clearStats: 'clearStats',
-      saveToStorage: 'saveStats',
+      // history
+      addToHistoryWithSave: 'history/addItemWithSave',
+      clearHistory: 'history/clear',
+      loadHistory: 'history/loadData',
     }),
 
     rowClassName: ({ rowIndex }) => {
@@ -97,8 +97,7 @@ export default {
     },
 
     clear() {
-      this.clearStats();
-      this.loadStats();
+      this.clearHistory();
     },
 
     /**
@@ -126,14 +125,13 @@ export default {
       return 'none';
     },
 
-    saveStats() {
-      this.pushToStats({
+    save() {
+      this.addToHistoryWithSave({
         certificate: this.getCertificate(),
         speed: this.getSpeed,
         accuracy: this.getAccuracy,
         textLength: this.text.length,
       });
-      this.saveToStorage();
     },
 
     /**
@@ -157,7 +155,7 @@ export default {
         this.mistake.check = false;
         if (this.activeChar === this.text.length) {
           this.stopTimer();
-          this.saveStats();
+          this.save();
         }
         return;
       }
@@ -204,7 +202,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      stats: 'getStats',
+      history: 'history/getList',
       text: 'getTextValue',
       error: 'getTextError',
       isLoading: 'isLoadingText',
@@ -245,7 +243,7 @@ export default {
 
   mounted() {
     this.fetchText();
-    this.loadStats();
+    this.loadHistory();
     document.addEventListener('keydown', this.handleKeyDown);
   },
 
