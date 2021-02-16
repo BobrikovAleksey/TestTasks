@@ -41,10 +41,6 @@ body {
   font-size: 16px;
 }
 
-a {
-  text-decoration: none;
-}
-
 h1 {
   font-weight: 700;
   font-size: 24px;
@@ -60,6 +56,18 @@ h3 {
   font-size: 18px;
 }
 
+a {
+  text-decoration: none;
+}
+
+.button {
+  text-transform: uppercase;
+}
+
+.content {
+  height: 100%;
+}
+
 .site {
   min-width: 1024px;
   min-height: 100vh;
@@ -67,17 +75,9 @@ h3 {
 
 .header {
   color: snow;
-  background: #545c64;
+  background: #545C64;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.content {
-  height: 100%;
-}
-
-.button {
-  text-transform: uppercase;
 }
 </style>

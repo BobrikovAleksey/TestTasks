@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h2 class="home__title">Узнай, как печатать вслепую</h2>
+    <h2 class="home__caption">Узнай, как печатать вслепую</h2>
 
     <p class="home__description">
       Главная идея слепой печати в том, что за каждым пальцем закреплена своя зона клавиш. Это
@@ -12,8 +12,8 @@
       <el-collapse-item title="Поза при печати текста" name="1">
         <el-row>
           <el-col :span="8">
-            <el-image class="home__image home__pose-image"
-                      alt="Поза при печати" src="/images/pose.png"></el-image>
+            <el-image class="home__image home__image_pose" :src="images.pose"
+                      alt="Поза при печати"></el-image>
           </el-col>
 
           <el-col :span="16">
@@ -33,8 +33,8 @@
 
       <el-collapse-item title="Исходная позиция" name="2">
         <el-row>
-          <el-image class="home__image home__fingers-image"
-                    alt="Положение рук на клавиатуре" src="/images/fingers.png"></el-image>
+          <el-image class="home__image home__image_fingers" :src="images.fingers"
+                    alt="Положение рук на клавиатуре"></el-image>
 
           <p class="home__text">
             Немного согни пальцы и положи их на клавиши ФЫВА и ОЛДЖ, которые находятся в среднем
@@ -51,15 +51,15 @@
 
       <el-collapse-item title="Схема клавиатуры" name="3">
         <el-row>
-          <el-image class="home__image home__keyboard-image"
-                    alt="Положение рук на клавиатуре" src="/images/keyboard.png"></el-image>
+          <el-image class="home__image home__image_keyboard" :src="images.keyboard"
+                    alt="Положение рук на клавиатуре"></el-image>
 
           <p class="home__text">
             Цвет клавиш на этой клавиатуре поможет тебе понять и запомнить, каким пальцем на какую
             клавишу нужно нажимать.
           </p>
 
-          <ul class="home__list home__text">
+          <ul class="home__list">
             <li>Нажимай клавиши только тем пальцем, который для них предназначен.</li>
             <li>Всегда возвращай пальцы в исходную позицию «ФЫВА – ОЛДЖ».</li>
             <li>Когда набираешь текст, представляй расположение клавиш.</li>
@@ -84,8 +84,8 @@
       <el-collapse-item title="Движение пальцев" name="4">
         <el-row>
           <el-col :span="8">
-            <el-image class="home__image home__man-image"
-                      alt="Человек с повязкой на глазах" src="/images/man.png"></el-image>
+            <el-image class="home__image home__image_man" :src="images.man"
+                      alt="Человек с повязкой на глазах"></el-image>
           </el-col>
 
           <el-col :span="16">
@@ -143,6 +143,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Home',
 
@@ -155,74 +157,88 @@ export default {
       this.$router.push('/testing');
     },
   },
+
+  computed: {
+    ...mapGetters({
+      images: 'getImages',
+    }),
+  },
 };
 </script>
 
 <style lang="scss">
 .home {
   &__button {
-    margin: 32px auto;
+    margin: 24px auto;
+  }
+
+  &__caption {
+    margin-bottom: 12px;
   }
 
   &__description {
     width: 100%;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   &__image {
     width: 100%;
     display: flex;
     justify-content: center;
+
+    &_fingers img {
+      width: auto;
+      max-height: 150px;
+      margin-bottom: 32px;
+    }
+
+    &_keyboard img {
+      width: auto;
+      max-height: 250px;
+      margin-bottom: 32px;
+    }
+
+    &_man img {
+      max-width: 150px;
+      height: auto;
+    }
+
+    &_pose img {
+      max-width: 200px;
+      height: auto;
+    }
   }
 
   &__list {
-    margin-left: 20px;
+    margin-left: 16px;
+
+    &:nth-of-type(2) {
+      margin-top: 12px;
+    }
+
+    li {
+      width: 100%;
+    }
   }
 
   &__text {
     width: 100%;
-    margin-top: 10px;
-  }
-
-  &__title {
-    margin-bottom: 16px;
-  }
-
-  &__fingers-image img {
-    width: auto;
-    max-height: 150px;
-    margin-bottom: 32px;
-  }
-
-  &__keyboard-image img {
-    width: auto;
-    max-height: 250px;
-    margin-bottom: 32px;
-  }
-
-  &__man-image img {
-    max-width: 150px;
-    height: auto;
-  }
-
-  &__pose-image img {
-    max-width: 200px;
-    height: auto;
+    margin-top: 12px;
   }
 }
 
 .el-collapse-item {
+  &__content {
+    font-size: 16px;
+  }
+
   &__header {
     font-size: 18px;
     font-weight: 600;
   }
-
-  &__content {
-    font-size: 16px;
-  }
 }
 
 .el-row {
-  padding: 16px;
+  padding: 12px;
 }
 </style>
