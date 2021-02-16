@@ -84,7 +84,8 @@ export default {
 
   methods: {
     ...mapActions({
-      fetchText: 'fetchText',
+      // testing
+      fetchText: 'testing/fetchText',
       // history
       addToHistoryWithSave: 'history/addItemWithSave',
       clearHistory: 'history/clear',
@@ -203,9 +204,9 @@ export default {
   computed: {
     ...mapGetters({
       history: 'history/getList',
-      text: 'getTextValue',
-      error: 'getTextError',
-      isLoading: 'isLoadingText',
+      text: 'testing/getText',
+      isError: 'testing/isError',
+      isLoading: 'testing/isLoading',
     }),
 
     getAccuracy() {

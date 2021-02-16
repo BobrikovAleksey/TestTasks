@@ -41,14 +41,14 @@ export default {
 
   methods: {
     ...mapActions({
-      fetchText: 'fetchText',
-      setTextCount: 'setApiTextCount',
+      fetchText: 'testing/fetchText',
+      setTextLength: 'testing/setTextLength',
     }),
 
     handleChangeVolume() {
-      if (this.getVolume === this.volume) return;
+      if (this.volume === this.textLength) return;
 
-      this.setTextCount(this.volume);
+      this.setTextLength(this.volume);
       this.fetchText();
     },
 
@@ -59,12 +59,12 @@ export default {
 
   computed: {
     ...mapGetters({
-      getVolume: 'getApiCount',
+      textLength: 'testing/getTextLength',
     }),
   },
 
   created() {
-    this.volume = this.getVolume;
+    this.volume = this.textLength;
   },
 };
 </script>
