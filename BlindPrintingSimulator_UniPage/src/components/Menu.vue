@@ -1,6 +1,6 @@
 <template>
-  <el-menu text-color="#fff" active-text-color="#ffd04b" background-color="inherit"
-           mode="horizontal" class="el-menu-demo" router :default-active="current">
+  <el-menu background-color="inherit" text-color="#FFF" active-text-color="#FFD04B" router
+           mode="horizontal" :default-active="current">
     <el-menu-item index="/">
       <router-link to="/">ОБУЧЕНИЕ</router-link>
     </el-menu-item>
@@ -26,7 +26,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-
-</style>
