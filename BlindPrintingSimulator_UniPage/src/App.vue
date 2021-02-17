@@ -22,6 +22,10 @@ export default {
     Footer,
     Menu,
   },
+
+  mounted() {
+    this.$router.push('/');
+  },
 };
 </script>
 
