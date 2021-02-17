@@ -46,6 +46,20 @@ export default {
       value: '',
       isLoading: false,
       isError: false,
+      length: {
+        min: 1,
+        max: 5,
+      },
+    },
+    test: {
+      visibility: false,
+      cursor: 0,
+      mistakes: 0,
+      timer: {
+        id: null,
+        start: null,
+        end: null,
+      },
     },
   },
   mutations,

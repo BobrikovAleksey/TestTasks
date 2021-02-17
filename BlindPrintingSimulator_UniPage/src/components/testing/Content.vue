@@ -15,7 +15,8 @@
           памяти, все твои десять пальцев будут знать, куда нажать.
         </p>
 
-        <el-button class="button test-content__button" type="warning" plain @click="goToTest">
+        <el-button class="button test-content__button" type="warning" plain
+                   @click="switchTestVisibility">
           Пройти тест печати
         </el-button>
       </el-col>
@@ -89,29 +90,23 @@
         Хватай клавиатуру и измеряй свою скорость печати!
       </p>
 
-      <el-button class="button test-content__button" type="warning" plain @click="goToTest">
+      <el-button class="button test-content__button" type="warning" plain
+                 @click="switchTestVisibility">
         Пройти тест печати
       </el-button>
     </el-row>
   </div>
 </template>
 
+<!--suppress JSAnnotator -->
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Content',
 
-  props: {
-    goToTest: {
-      type: Function,
-      default: () => {},
-    },
-  },
-
   data() {
     return {
-      publicPath: process.env.BASE_URL,
       certificates: [
         {
           certificate: 'platinum',
@@ -133,6 +128,10 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      switchTestVisibility: 'testing/switchTestVisibility',
+    }),
+
     rowClassName: ({ rowIndex }) => `test-content__table-row test-content__table-row_${rowIndex}`,
   },
 

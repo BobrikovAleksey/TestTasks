@@ -6,7 +6,7 @@ import mutations from './mutations';
 import history from './history';
 import testing from './testing';
 
-export default createStore({
+const vuexOptions = {
   state: {},
   mutations,
   actions,
@@ -16,4 +16,6 @@ export default createStore({
     history,
     testing,
   },
-});
+};
+
+export default createStore(vuexOptions);

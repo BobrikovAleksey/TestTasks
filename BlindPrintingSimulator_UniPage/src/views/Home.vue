@@ -142,6 +142,7 @@
   </div>
 </template>
 
+<!--suppress JSAnnotator -->
 <script>
 import { mapGetters } from 'vuex';
 

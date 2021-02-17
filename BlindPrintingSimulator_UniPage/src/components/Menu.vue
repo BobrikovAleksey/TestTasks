@@ -11,6 +11,7 @@
   </el-menu>
 </template>
 
+<!--suppress JSUnusedGlobalSymbols -->
 <script>
 export default {
   name: 'Menu',

@@ -1,24 +1,25 @@
 <template>
   <div class="testing">
-    <vContent v-show="!isTest" :goToTest="goToTest"></vContent>
+    <vContent v-show="!isVisibilityTest"></vContent>
 
-    <div v-show="isTest">
-      <el-row>
-        <vField :isTest="isTest"></vField>
-      </el-row>
-
+    <div v-show="isVisibilityTest">
       <el-row>
         <div class="testing__settings">
           <p>Количество предложений</p>
 
-          <el-slider :step="1" :min="1" :max="6" show-stops v-model="volume"
+          <el-slider :step="1" :min="minLength" :max="maxLength" show-stops v-model="volume"
                      @change="handleChangeVolume"></el-slider>
         </div>
+      </el-row>
+
+      <el-row>
+        <vField></vField>
       </el-row>
     </div>
   </div>
 </template>
 
+<!--suppress JSAnnotator -->
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import vContent from '@/components/testing/Content.vue';
@@ -42,29 +43,35 @@ export default {
   methods: {
     ...mapActions({
       fetchText: 'testing/fetchText',
+      resetTest: 'testing/resetTest',
       setTextLength: 'testing/setTextLength',
+      switchTestVisibility: 'testing/switchTestVisibility',
     }),
 
     handleChangeVolume() {
       if (this.volume === this.textLength) return;
 
+      this.resetTest();
       this.setTextLength(this.volume);
       this.fetchText();
-    },
-
-    goToTest() {
-      this.isTest = true;
     },
   },
 
   computed: {
     ...mapGetters({
+      minLength: 'testing/getMinLength',
+      maxLength: 'testing/getMaxLength',
       textLength: 'testing/getTextLength',
+      isVisibilityTest: 'testing/isVisibilityTest',
     }),
   },
 
   created() {
     this.volume = this.textLength;
+  },
+
+  mounted() {
+    this.switchTestVisibility(false);
   },
 };
 </script>
@@ -76,7 +83,7 @@ export default {
     margin: 0 auto;
   }
 
-  .el-slider {
+  & .el-slider {
     &__bar {
       background: #E6A23C;
     }
