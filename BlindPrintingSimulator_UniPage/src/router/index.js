@@ -15,6 +15,10 @@ const routes = [
     component: Testing,
     meta: { scrollToTop: true },
   },
+  {
+    path: '/TestTasks/BlindPrintingSimulator_UniPage/dist',
+    redirect: '/',
+  },
 ];
 
 const router = createRouter({
