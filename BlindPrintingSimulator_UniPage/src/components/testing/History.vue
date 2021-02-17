@@ -28,8 +28,8 @@ export default {
     }),
 
     rowClassName: ({ rowIndex }) => {
-      if (rowIndex === 0) return 'test-field__table-row test-field__table-row_first';
-      return 'test-field__table-row';
+      if (rowIndex === 0) return 'history__table-row history__table-row_first';
+      return 'history__table-row';
     },
   },
 
@@ -97,6 +97,7 @@ export default {
 
   &-row {
     & td:not(:first-of-type) .cell {
+      display: flex;
       justify-content: flex-end;
     }
   }
