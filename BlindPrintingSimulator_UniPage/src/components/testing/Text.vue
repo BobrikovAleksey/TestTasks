@@ -81,7 +81,6 @@ export default {
      */
     handleKeyDown(event) {
       if (!this.isVisibility || this.isCompleted || event.key.length > 1) {
-        event.preventDefault();
         return;
       }
 
