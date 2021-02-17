@@ -16,7 +16,7 @@ const routes = [
     meta: { scrollToTop: true },
   },
   {
-    path: '*',
+    path: '/TestTasks/BlindPrintingSimulator_UniPage/dist/',
     redirect: '/',
   },
 ];
