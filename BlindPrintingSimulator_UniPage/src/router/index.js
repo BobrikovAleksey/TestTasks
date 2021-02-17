@@ -15,6 +15,10 @@ const routes = [
     component: Testing,
     meta: { scrollToTop: true },
   },
+  {
+    path: '*',
+    redirect: '/',
+  },
 ];
 
 const router = createRouter({

@@ -1,10 +1,20 @@
-const getImages = () => ({
-  certificates: `${process.env.BASE_URL}images/certificates.png`,
-  fingers: `${process.env.BASE_URL}images/fingers.png`,
-  keyboard: `${process.env.BASE_URL}images/keyboard.png`,
-  man: `${process.env.BASE_URL}images/man.png`,
-  pose: `${process.env.BASE_URL}images/pose.png`,
-});
+const getPrefixUrl = () => {
+  if (window.location.hostname === 'bobrikovaleksey.github.io') {
+    return 'https://bobrikovaleksey.github.io/TestTasks/BlindPrintingSimulator_UniPage/dist/';
+  }
+  return process.env.BASE_URL;
+};
+
+const getImages = () => {
+  const prefixUrl = getPrefixUrl();
+  return {
+    certificates: `${prefixUrl}images/certificates.png`,
+    fingers: `${prefixUrl}images/fingers.png`,
+    keyboard: `${prefixUrl}images/keyboard.png`,
+    man: `${prefixUrl}images/man.png`,
+    pose: `${prefixUrl}images/pose.png`,
+  };
+};
 
 export default {
   getImages,
