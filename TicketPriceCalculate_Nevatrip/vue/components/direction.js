@@ -1,18 +1,19 @@
+// noinspection JSUnresolvedFunction,JSUnresolvedVariable
 export default {
     methods: {
         ...Vuex.mapActions({
-            setDirection: 'setDirection',
+            changeDirectionId: 'setDirectionId',
         }),
 
-        handleChange: function (event) {
-            this.setDirection(Number(event.target.value));
+        handleChange(event) {
+            this.changeDirectionId(Number(event.target.value));
         },
     },
 
     computed: {
         ...Vuex.mapGetters({
-            list: 'getDirectionsList',
-            value: 'getDirectionsValue',
+            currentDirectionIndex: 'getCurrentDirectionIndex',
+            directions: 'getDirectionList',
         }),
     },
 
@@ -22,8 +23,8 @@ export default {
                 <label class="input-group-text">Направление</label>
             </div>
 
-            <select class="custom-select" @change="handleChange">
-                <option v-for="el in list" :key="el.id" :value="el.value">{{ el.title }}</option>
+            <select class="custom-select" @change="handleChange" :value="currentDirectionIndex">
+                <option v-for="dir in directions" :key="dir.id" :value="dir.id">{{ dir.title }}</option>
             </select>
         </div>
     `,

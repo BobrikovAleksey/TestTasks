@@ -1,16 +1,42 @@
+// ticket
+
 /**
  * @param state
- * @param value {number}
- * @constructor
+ * @param index { number }
  */
-const SET_DIRECTIONS_VALUE = (state, value) => {
-    state.directions.value = value;
+const SET_TICKET_BACK_INDEX = (state, index) => {
+    state.tickets.backIndex = index;
 };
 
 /**
  * @param state
- * @param message {string|string[]}
- * @constructor
+ * @param index { number }
+ */
+const SET_TICKET_STRAIGHT_INDEX = (state, index) => {
+    state.tickets.straightIndex = index;
+};
+
+/**
+ * @param state
+ * @param quantity { number }
+ */
+const SET_TICKET_QUANTITY = (state, quantity) => {
+    state.tickets.quantity = quantity;
+};
+
+// other
+
+/**
+ * @param state
+ * @param value { number }
+ */
+const SET_DIRECTION = (state, value) => {
+    state.directions.current = value;
+};
+
+/**
+ * @param state
+ * @param message { string[] }
  */
 const SET_MESSAGE = (state, message) => {
     state.message = message;
@@ -18,36 +44,20 @@ const SET_MESSAGE = (state, message) => {
 
 /**
  * @param state
- * @param value {number}
- * @constructor
+ * @param data {{ timezone: { name: string, value: number }, from: string, to: string,
+ *                straight: string[]|'yyyy-mm-dd hh:mm:ss', back: string[]|'yyyy-mm-dd hh:mm:ss' }}
  */
-const SET_MIN_TIME = (state, value) => {
-    state.minTime = value;
-};
-
-/**
- * @param state
- * @param value {number}
- * @constructor
- */
-const SET_TICKET_QUANTITY = (state, value) => {
-    state.ticketQuantity = value;
-};
-
-/**
- * @param state
- * @param name {string}
- * @param value {number}
- * @constructor
- */
-const SET_TIME_POINT = (state, { name, value }) => {
-    state[name].value = value;
+const SET_TIMETABLE = (state, data) => {
+    state.timetable = { ...data };
 };
 
 export default {
-    SET_DIRECTIONS_VALUE,
-    SET_MESSAGE,
-    SET_MIN_TIME,
+    // ticket
+    SET_TICKET_BACK_INDEX,
+    SET_TICKET_STRAIGHT_INDEX,
     SET_TICKET_QUANTITY,
-    SET_TIME_POINT,
+    // other
+    SET_DIRECTION,
+    SET_MESSAGE,
+    SET_TIMETABLE,
 };

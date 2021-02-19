@@ -1,41 +1,93 @@
-const getDirectionsList = (state) => state.directions.list;
+import {
+    formatTimetable,
+} from '../libs.js';
 
-const getDirectionsValue = (state) => state.directions.value;
+// direction
+
+const getCurrentDirection = (state) => state.directions.list.find((el) => el.id === state.directions.current);
+
+const getCurrentDirectionIndex = (state) => state.directions.current;
+
+const getDirectionList = (state) => state.directions.list;
+
+// timetable
+
+const getFromPoint = (state) => state.timetable.from ?? 'A';
+
+const getToPoint = (state) => state.timetable.to ?? 'B';
+
+const getTimetableBack = (state) => {
+    const { timezone, back } = state.timetable;
+    if (!back) return [];
+    return formatTimetable(back, timezone);
+};
+
+const getTimetableStraight = (state) => {
+    const { timezone, straight } = state.timetable;
+    if (!straight) return [];
+    return formatTimetable(straight, timezone);
+};
+
+// ticket
+
+const getQuantityTickets = (state) => state.tickets.quantity;
+
+const getTicketBack = (state, getters) => getters.getTimetableBack[state.tickets.backIndex] ?? null;
+
+const getTicketBackIndex = (state) => state.tickets.back;
+
+const getTicketPrice = (state) => state.directions.current === 3 ? state.travel.price.two : state.travel.price.one;
+
+const getTicketStraight = (state, getters) => getters.getTimetableStraight[state.tickets.straightIndex] ?? null;
+
+const getTicketStraightIndex = (state) => state.tickets.straight;
+
+const getCostTickets = (state, getters) => state.tickets.quantity * getters.getTicketPrice;
+
+// other
 
 const getMessage = (state) => state.message;
 
-const getMinTime = (state) => state.minTime;
+const getTravelTime = (state) => state.travel.time;
 
-const getPrices = (state) => state.prices;
+const getTravelTimeRoad = (state) => {
+    switch (state.directions.current) {
+        default: return 0;
+        case 1: return state.travel.time.straight;
+        case 2: return state.travel.time.back;
+        case 3: return state.travel.time.straight + state.travel.time.back;
+    }
+};
 
-const getTicketQuantity = (state) => state.ticketQuantity;
-
-const getTravelTime = (state) => state.travelTime;
-
-const getTimetableAList = (state) => state.timetableA.list;
-
-const getTimetableATitle = (state) => state.timetableA.title;
-
-const getTimetableAValue = (state) => state.timetableA.value;
-
-const getTimetableBList = (state) => state.timetableB.list;
-
-const getTimetableBTitle = (state) => state.timetableB.title;
-
-const getTimetableBValue = (state) => state.timetableB.value;
+const getTravelTimeFull = (state, getters) => {
+    if (state.directions.current === 3 && state.tickets.straightIndex >= 0 && state.tickets.backIndex >= 0) {
+        const time = Math.ceil((getters.getTicketBack.value - getters.getTicketStraight.value) / 60000);
+        return time + getters.getTravelTimeRoad;
+    }
+    return getters.getTravelTimeRoad;
+};
 
 export default {
-    getDirectionsList,
-    getDirectionsValue,
+    // direction
+    getCurrentDirection,
+    getCurrentDirectionIndex,
+    getDirectionList,
+    // timetable
+    getFromPoint,
+    getToPoint,
+    getTimetableBack,
+    getTimetableStraight,
+    // ticket
+    getCostTickets,
+    getQuantityTickets,
+    getTicketBack,
+    getTicketBackIndex,
+    getTicketPrice,
+    getTicketStraight,
+    getTicketStraightIndex,
+    // other
     getMessage,
-    getMinTime,
-    getPrices,
-    getTicketQuantity,
     getTravelTime,
-    getTimetableAList,
-    getTimetableATitle,
-    getTimetableAValue,
-    getTimetableBList,
-    getTimetableBTitle,
-    getTimetableBValue,
+    getTravelTimeFull,
+    getTravelTimeRoad,
 }

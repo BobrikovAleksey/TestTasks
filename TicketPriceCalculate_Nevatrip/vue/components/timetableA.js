@@ -1,49 +1,59 @@
+// noinspection JSUnresolvedFunction,JSUnresolvedVariable,JSUnusedGlobalSymbols
 export default {
     methods: {
         ...Vuex.mapActions({
-            setTimePoint: 'setTimePoint',
+            changeTicketStraightIndex: 'setTicketStraightIndex',
         }),
 
-        handleChange: function () {
-            const value = Number(this.input.value);
+        changeDatetime() {
+            this.changeTicketStraightIndex(Number(this.input.value));
+        },
 
-            this.setTimePoint({ name: 'timetableA', value });
+        undo() {
+            this.changeTicketStraightIndex(-1);
         },
     },
 
     computed: {
         ...Vuex.mapGetters({
-            direction: 'getDirectionsValue',
-            minTime: 'getMinTime',
-            list: 'getTimetableAList',
-            title: 'getTimetableATitle',
+            currentDirectionIndex: 'getCurrentDirectionIndex',
+            ticketIndex: 'getTicketStraightIndex',
+            timetable: 'getTimetableStraight',
         }),
 
         isShow: function () {
-            return [1, 3].includes(this.direction);
+            return [1, 3].includes(this.currentDirectionIndex);
         },
     },
 
     mounted() {
         this.input = this.$el.querySelector('.custom-select');
-        this.handleChange();
+        this.undo();
     },
 
     updated() {
-        this.handleChange();
+        this.changeDatetime();
     },
 
     template: `
         <div class="input-group mb-3" v-show="isShow">
             <div class="input-group-prepend">
-                <label class="input-group-text">Расписание</label>
+                <label class="input-group-text">Расписание туда</label>
             </div>
 
-            <select class="custom-select" @change="handleChange">
-                <option v-for="el in list" :key="el.id" :value="el.value" v-if="el.value > minTime">
-                    {{ el.valueAsString }} ({{ title }})
+            <select class="custom-select" @change="changeDatetime" :value="ticketIndex">
+                <option selected disabled hidden value="-1">Выберите дату и время поездки</option>
+                <option v-for="(el, index) in timetable" :key="index" :value="index">
+<!--                        v-if="direction !== 3 && el.value > minTime || el.value > (minValue + travelTime)">-->
+                    {{ el.asString }}
                 </option>
             </select>
+
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" @click="undo">
+                    <i class="fa fa-undo"></i>
+                </button>
+            </div>
         </div>
     `,
 };
