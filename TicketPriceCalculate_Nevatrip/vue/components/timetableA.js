@@ -19,6 +19,7 @@ export default {
             currentDirectionIndex: 'getCurrentDirectionIndex',
             ticketIndex: 'getTicketStraightIndex',
             timetable: 'getTimetableStraight',
+            maxDate: 'getMaxStraightDate',
         }),
 
         isShow: function () {
@@ -43,8 +44,8 @@ export default {
 
             <select class="custom-select" @change="changeDatetime" :value="ticketIndex">
                 <option selected disabled hidden value="-1">Выберите дату и время поездки</option>
-                <option v-for="(el, index) in timetable" :key="index" :value="index">
-<!--                        v-if="direction !== 3 && el.value > minTime || el.value > (minValue + travelTime)">-->
+                <option v-for="(el, index) in timetable" :key="index" :value="index"
+                        v-if="currentDirectionIndex !== 3 || !maxDate || el.value < maxDate">
                     {{ el.asString }}
                 </option>
             </select>

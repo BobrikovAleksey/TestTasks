@@ -19,11 +19,6 @@ export default {
         calculate() {
             const quantity = this.quantityTickets;
 
-            if (quantity < 1) {
-                this.setMessage('Вы не указали сколько билетов хотели бы приобрести');
-                return;
-            }
-
             if ([1, 3].includes(this.currentDirectionIndex) && !this.ticketStraight) {
                 this.setMessage('Вы не указали время отправления в прямом направлении');
                 return;
@@ -31,6 +26,11 @@ export default {
 
             if ([2, 3].includes(this.currentDirectionIndex) && !this.ticketBack) {
                 this.setMessage('Вы не указали время отправления в обратном направлении');
+                return;
+            }
+
+            if (quantity < 1) {
+                this.setMessage('Вы не указали сколько билетов хотели бы приобрести');
                 return;
             }
 

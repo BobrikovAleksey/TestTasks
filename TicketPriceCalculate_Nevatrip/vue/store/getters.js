@@ -34,17 +34,31 @@ const getQuantityTickets = (state) => state.tickets.quantity;
 
 const getTicketBack = (state, getters) => getters.getTimetableBack[state.tickets.backIndex] ?? null;
 
-const getTicketBackIndex = (state) => state.tickets.back;
+const getTicketBackIndex = (state) => state.tickets.backIndex;
 
 const getTicketPrice = (state) => state.directions.current === 3 ? state.travel.price.two : state.travel.price.one;
 
 const getTicketStraight = (state, getters) => getters.getTimetableStraight[state.tickets.straightIndex] ?? null;
 
-const getTicketStraightIndex = (state) => state.tickets.straight;
+const getTicketStraightIndex = (state) => state.tickets.straightIndex;
 
 const getCostTickets = (state, getters) => state.tickets.quantity * getters.getTicketPrice;
 
 // other
+
+const getMaxStraightDate = (state, getters) => {
+    if (!getters.getTicketBack) return null;
+    const date = new Date(getters.getTicketBack.value);
+    date.setMinutes(date.getMinutes() - state.travel.time.straight);
+    return date;
+};
+
+const getMinBackDate = (state, getters) => {
+    if (!getters.getTicketStraight) return null;
+    const date = new Date(getters.getTicketStraight.value);
+    date.setMinutes(date.getMinutes() + state.travel.time.straight);
+    return date;
+};
 
 const getMessage = (state) => state.message;
 
@@ -86,6 +100,8 @@ export default {
     getTicketStraight,
     getTicketStraightIndex,
     // other
+    getMaxStraightDate,
+    getMinBackDate,
     getMessage,
     getTravelTime,
     getTravelTimeFull,

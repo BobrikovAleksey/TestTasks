@@ -37,7 +37,7 @@ export const declOfNum = (number, textForms = ['билет', 'билета', 'б
  */
 export const formatTimetable = (timetable, timezone) => {
     if (timezone && timezone.diff) return timetable.map((date) => {
-        const title = timezone.title ? ` ${timezone.title}` : '';
+        const title = timezone.title ? `, ${timezone.title}` : '';
         const dateAsString = `${date.toLocaleString('ru', options.time)}${title}`;
         const localDate = new Date(date);
         localDate.setMinutes(localDate.getMinutes() + timezone.diff);
