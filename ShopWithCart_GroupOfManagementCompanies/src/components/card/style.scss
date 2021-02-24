@@ -1,0 +1,26 @@
+@import "../../styles/vars", "../../styles/mixins";
+
+.card {
+  @include card-shadow;
+  max-width: 1008px;
+  min-height: 290px;
+  background: $Background;
+  border-radius: 2px;
+  display: flex;
+  padding-left: 18px;
+  padding-right: 48px;
+  margin: 0 auto;
+
+  &-preview, &-price {
+    padding: 24px 0 18px;
+  }
+
+  &-preview {
+    width: 170px;
+  }
+
+  &-details {
+    flex: 1;
+    padding: 18px 56px 18px 40px;
+  }
+}

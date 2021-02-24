@@ -1,0 +1,58 @@
+// breakpoints
+$SizePhoneN: 320;
+$SizePhone: 320px;
+$SizeTabletN: 600;
+$SizeTablet: 600px;
+$SizeDesktopN: 1280;
+$SizeDesktop: 1280px;
+$SizeDesktopLgN: 1920;
+$SizeDesktopLg: 1920px;
+
+// padding
+$ContainerPaddingSmN: 10;
+$ContainerPaddingSm: 10px;
+$ContainerPaddingMdN: 20;
+$ContainerPaddingMd: 20px;
+$ContainerPaddingLgN: 40;
+$ContainerPaddingLg: 40px;
+$ContainerPaddingXLgN: 80;
+$ContainerPaddingXLg: 80px;
+
+// input, button
+$InputWidthSmN: 300;
+$InputWidthSm: 300px;
+$InputHeightSmN: 45;
+$InputHeightSm: 45px;
+$InputWidthMdN: 560;
+$InputWidthMd: 560px;
+$InputHeightMdN: $InputHeightSmN;
+$InputHeightMd: $InputHeightSm;
+$InputWidthLgN: 300;
+$InputWidthLg: 300px;
+$InputHeightLgN: $InputHeightSmN;
+$InputHeightLg: $InputHeightSm;
+$InputWidthXLgN: 360;
+$InputWidthXLg: 360px;
+$InputHeightXLgN: 60;
+$InputHeightXLg: 60px;
+
+// palette
+
+$Gold: #FDD292;
+$Green: #46D2A8;
+$Gray: rgb(187, 194, 206);
+$Yellow: #FC3;
+$Secondary: rgba(0, 0, 0, 0.6);
+$SecondaryDark: rgba(0, 0, 0, 0.8);
+$LightGrayishBlue: #EBEDF8;
+
+$Background: white;
+$Brand: $Gold;
+$Checked: $Green;
+$Rating: $Yellow;
+$Text: black;
+$TextSecondary: $Secondary;
+$TextSecondaryDark: $SecondaryDark;
+$BorderHover: $Gray;
+$Border: $LightGrayishBlue;
+$BorderBrand: $Yellow;

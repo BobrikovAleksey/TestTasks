@@ -1,0 +1,63 @@
+@import "../../../styles/vars", "../../../styles/mixins";
+
+.card-details {
+  &__availability {
+    cursor: pointer;
+    width: auto;
+    display: inline-flex;
+    margin-top: 10px;
+
+    &-icon {
+      @include font-size(16px, 16px);
+      @include flex-vcenter;
+      color: $Checked;
+      margin-top: -1px;
+      margin-right: 9px;
+    }
+
+    &-text {
+      @include font-size(13px, 17px);
+      color: $TextSecondaryDark;
+      font-style: italic;
+      letter-spacing: 0.35px;
+      border-bottom: 1px dashed $SecondaryDark;
+    }
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  &__description {
+    //
+  }
+
+  &__link {
+    @include font-size(12px);
+    @include flex-vcenter;
+    color: $TextSecondary;
+
+    &:not(:first-of-type):before {
+      content: "";
+      width: 30px;
+      height: 100%;
+      display: inline-block;
+      background: url("../../../assets/inline/svg/chevron_right.svg") center center no-repeat;
+      background-size: 18px;
+    }
+  }
+
+  &__name {
+    overflow: hidden;
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+  }
+
+  &__related {
+    //
+  }
+}

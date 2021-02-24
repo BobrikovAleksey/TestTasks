@@ -1,37 +1,73 @@
 const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src', 'index'),
+    entry: {
+        main: path.resolve(__dirname, 'src/main'),
+    },
 
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
     },
 
-    plugins: [
-        new htmlWebpackPlugin({
-            template: path.resolve(__dirname, 'index.html'),
-            filename: 'index.html',
-        }),
-    ],
-
     resolve: {
-        extensions: [ '.js', '.jsx' ]
+        extensions: [ '.js', '.jsx', '.css', '.scss', '.sass' ],
+        alias: {
+            Components: path.resolve(__dirname, 'src/components'),
+            Scripts: path.resolve(__dirname, 'src/scripts'),
+            Store: path.resolve(__dirname, 'src/store'),
+            Styles: path.resolve(__dirname, 'src/styles'),
+        },
     },
 
     module: {
         rules: [
+            // scripts
             {
-                test: /\.jsx?$/,
+                test: /\.jsx?$/i,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: [ '@babel/preset-env' ]
-                    }
-                }
-            }
-        ]
-    }
+                    loader: 'babel-loader',
+                    options: { presets: [ '@babel/preset-env' ] },
+                },
+            },
+
+            // styles
+            {
+                test: /\.(s[ac]ss|css)$/i,
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+            },
+
+            // images
+            {
+                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                type: 'asset/resource',
+            },
+
+            // fonts and svg
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+                type: 'asset/inline',
+            },
+        ],
+    },
+
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                { from: './src/assets', to: './src/assets' },
+            ],
+        }),
+
+        new HtmlWebpackPlugin({
+            title: 'Петрович: Магазин строительных материалов',
+            template: path.resolve(__dirname, 'index.html'),
+        }),
+
+        new CleanWebpackPlugin(),
+    ],
 };

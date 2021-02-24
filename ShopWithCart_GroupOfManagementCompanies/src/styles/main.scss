@@ -1,0 +1,70 @@
+@import "./vars", "./mixins";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,400&display=swap');
+
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/inline/MaterialIcons-Regular.eot");
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url("../assets/inline/MaterialIcons-Regular.woff2") format("woff2"),
+    url("../assets/inline/MaterialIcons-Regular.woff") format("woff"),
+    url("../assets/inline/MaterialIcons-Regular.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  padding: 0;
+  margin: 0;
+
+  &:after, &:before {
+    box-sizing: inherit;
+  };
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  user-select: none;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  color: $Text;
+}
+
+h3 {
+  @include font-size(18px, 24px);
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+a {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+button, input {
+  transition: color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  outline: none;
+  background: none;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.material-icon {
+  @include material-icon(24px, 1px);
+}

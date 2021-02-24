@@ -1,0 +1,64 @@
+@import "../../../styles/vars", "../../../styles/mixins";
+
+.card-price {
+  @include flex-column;
+  width: 242px;
+  color: $TextSecondary;
+  border-left: 1px solid $Border;
+  border-right: 1px solid $Border;
+  padding: 24px 12px 12px;
+
+  &__tabs {
+    @include font-size(13px, 17px);
+    @include flex-vcenter;
+    letter-spacing: 0.2px;
+    border-bottom: 1px solid $Border;
+
+    & p {
+      height: 22px;
+    }
+  }
+
+  &__tab {
+    @include font-size(13px, 17px);
+    @include flex-hcenter;
+    height: 22px;
+    color: $TextSecondary;
+    letter-spacing: 0.2px;
+    padding: 0 4px;
+    position: relative;
+
+    &:after {
+      @include position-bottom-left(-1px);
+      content: "";
+      width: 100%;
+      height: 1px;
+      display: none;
+      position: absolute;
+    }
+
+    &:not(&_active) {
+      &:hover, &:active {
+        color: $Text;
+
+        &:after {
+          background: $BorderHover;
+          display: block;
+        }
+      }
+    }
+
+    &_active {
+      color: $Text;
+
+      &:after {
+        background: $BorderBrand;
+        display: block;
+      }
+    }
+
+    & > sup {
+      @include font-size(10px, 10px);
+    }
+  }
+}
