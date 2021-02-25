@@ -1,4 +1,4 @@
-@import "../../styles/vars", "../../styles/mixins";
+@import "~Styles/vars", "~Styles/mixins";
 
 .card {
   @include card-shadow;

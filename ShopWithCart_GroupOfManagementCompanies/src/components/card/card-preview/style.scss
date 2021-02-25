@@ -1,4 +1,4 @@
-@import "../../../styles/vars", "../../../styles/mixins";
+@import "~Styles/vars", "~Styles/mixins";
 
 .card-preview {
   &__id {
@@ -24,7 +24,7 @@
   }
 
   &__rating {
-    @include font-size(13px, auto);
+    @include font-size(13px, normal);
     @include flex-center-center;
     width: 100%;
     margin-top: 14px;
@@ -36,18 +36,21 @@
 
     &-star {
       @include font-size(14px, 14px);
+      color: $StarInactive;
       margin-left: 2px;
 
       &:first-of-type {
         margin-left: 0;
       }
+
+      &_active {
+        color: $StarActive;
+      }
     }
 
     &-stars {
-      background: $Rating;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       display: inline-flex;
+      position: relative;
       margin-top: -1px;
     }
   }

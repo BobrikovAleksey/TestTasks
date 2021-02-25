@@ -1,13 +1,11 @@
-@import "vars";
+@import "./vars";
 
 // shadows
-
 @mixin card-shadow() {
   box-shadow: 0 -2px 10px rgb(68 92 130 / 4%), -1px 4px 10px rgb(68 92 130 / 6%), 0 2px 2px rgb(68 92 130 / 4%);
 }
 
 // fonts
-
 @mixin material-icon($size, $height: normal, $weight: 400) {
   pointer-events: none;
   font-family: Material Icons, serif;
@@ -32,10 +30,7 @@
   line-height: $height;
 }
 
-// display
-
 // flex
-
 @mixin flex-hcenter() {
   display: flex;
   justify-content: center;
@@ -72,7 +67,6 @@
 }
 
 // position
-
 @mixin position-top-bottom($top: 0, $bottom: $top) {
   top: $top;
   bottom: $bottom;
@@ -100,7 +94,6 @@
 
 
 // padding/margin
-
 @mixin padding-horizontal($left: auto, $right: $left) {
   padding-left: $left;
   padding-right: $right;

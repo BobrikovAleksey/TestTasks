@@ -1,4 +1,4 @@
-@import "../../../styles/vars", "../../../styles/mixins";
+@import "~Styles/vars", "~Styles/mixins";
 
 .card-price {
   @include flex-column;
@@ -55,10 +55,6 @@
         background: $BorderBrand;
         display: block;
       }
-    }
-
-    & > sup {
-      @include font-size(10px, 10px);
     }
   }
 }

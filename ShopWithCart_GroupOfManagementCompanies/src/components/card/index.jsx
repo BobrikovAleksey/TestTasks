@@ -10,12 +10,14 @@ export class Card extends React.Component {
     };
 
     render() {
+        const { product } = this.props
+
         return <div className="card">
-            <CardPreview />
+            <CardPreview product={ product } />
 
-            <CardDetails />
+            <CardDetails product={ product } />
 
-            <CardPrice />
+            <CardPrice product={ product } />
         </div>
     };
 }

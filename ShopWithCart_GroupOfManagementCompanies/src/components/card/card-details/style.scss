@@ -1,4 +1,4 @@
-@import "../../../styles/vars", "../../../styles/mixins";
+@import "~Styles/vars", "~Styles/mixins";
 
 .card-details {
   &__availability {
@@ -31,7 +31,10 @@
   }
 
   &__description {
-    //
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
   }
 
   &__link {
