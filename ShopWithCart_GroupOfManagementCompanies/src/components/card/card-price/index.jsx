@@ -21,7 +21,7 @@ const priceTypes = {
 export class CardPrice extends React.Component {
     state = {
         hasAlternative: this.props.hasAlternateUnit,
-        prices: priceFields.secondary,
+        prices: this.props.hasAlternateUnit ? priceFields.secondary : priceFields.main,
     };
 
     /**
@@ -31,6 +31,7 @@ export class CardPrice extends React.Component {
     getPrice(type = priceTypes.retail) {
         const { prices } = this.state;
         const { product } = this.props;
+
         switch (type) {
             default:
             case priceTypes.retail: return product[prices.retail];
@@ -45,7 +46,7 @@ export class CardPrice extends React.Component {
      */
     getRatio(alternative = false) {
         const { unitRatio, unitRatioAlt } = this.props.product;
-        return Math.floor(Number(alternative ? unitRatioAlt : unitRatio) * 100) / 100;
+        return Math.floor((alternative ? unitRatioAlt : unitRatio) * 100) / 100;
     }
 
     render() {
@@ -63,18 +64,20 @@ export class CardPrice extends React.Component {
             <div className="price-block__content">
                 <p className="price-block__price-label">По карте клуба</p>
 
-                <p className="price-block__price-gold">{ this.getPrice(priceTypes.gold) } Р</p>
+                <p className="price-block__price-gold">{ this.getPrice(priceTypes.gold) ?? 0 } Р</p>
 
-                <p className="price-block__price-retail">{ this.getPrice() } Р</p>
+                <p className="price-block__price-retail">{ this.getPrice() ?? 0 } Р</p>
 
-                <p className="price-block__point-label">За баллы: <span>{ this.getPrice(priceTypes.points) }</span></p>
+                <p className="price-block__point-label">За баллы:
+                    <span>{ this.getPrice(priceTypes.points) ?? 0 }</span>
+                </p>
             </div>
 
             <div className="price-block__tooltip">
                 <p className="price-block__tooltip-label">Продается упаковками:</p>
 
                 <p className="price-block__tooltip-value">
-                    { `${this.getRatio()} ${unit} = ${this.getRatio(true)} ${unitAlt}` }
+                    { `${this.getRatio() ?? 1} ${unit} = ${this.getRatio(true) ?? 1} ${unitAlt}` }
                 </p>
             </div>
 

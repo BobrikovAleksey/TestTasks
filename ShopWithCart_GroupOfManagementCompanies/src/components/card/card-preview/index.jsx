@@ -2,10 +2,6 @@ import './style';
 import React from 'react';
 
 export class CardPreview extends React.Component {
-    state = {
-        //
-    };
-
     render() {
         const { code, feedbacks, rating, smallImageUrl } = this.props.product;
 
