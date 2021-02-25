@@ -33,9 +33,9 @@ export class CardPrice extends React.Component {
         const { product } = this.props;
         switch (type) {
             default:
-            case priceTypes.retail: return Math.floor(Number(product[prices.retail]) * 100) / 100;
-            case priceTypes.gold: return Math.floor(Number(product[prices.gold]) * 100) / 100;
-            case priceTypes.points: return Math.floor((Number(product[priceFields.main.retail]) / 4) * 100) / 100;
+            case priceTypes.retail: return product[prices.retail];
+            case priceTypes.gold: return product[prices.gold];
+            case priceTypes.points: return product.priceInPoints;
         }
     };
 

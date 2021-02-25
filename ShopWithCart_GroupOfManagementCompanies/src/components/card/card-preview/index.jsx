@@ -6,24 +6,16 @@ export class CardPreview extends React.Component {
         //
     };
 
-    getImage() {
-        const { primaryImageUrl } = this.props.product;
-        const lastDotIndex = primaryImageUrl.lastIndexOf('.');
-        return `${primaryImageUrl.substring(0, lastDotIndex)}_220x200_1${primaryImageUrl.substring(lastDotIndex)}`;
-    };
-
     render() {
-        const { code } = this.props.product;
-        const rating = Math.round(Math.random() * 5);
-        const feedbacks = rating > 0 ? Math.round(Math.random() * 99 + 1) : 0;
+        const { code, feedbacks, rating, smallImageUrl } = this.props.product;
 
         return <div className="card-preview">
             <p className="card-preview__id">
-                <span className="card-preview__id_secondary">Код:</span>{ Number(code) }
+                <span className="card-preview__id_secondary">Код:</span>{ code }
             </p>
 
             <div className="card-preview__image">
-                <img src={ this.getImage() } alt="product" />
+                <img src={ smallImageUrl } alt="product" />
             </div>
 
             <p className="card-preview__rating">

@@ -17,10 +17,11 @@ module.exports = {
     resolve: {
         extensions: [ '.js', '.jsx', '.css', '.scss', '.sass' ],
         alias: {
-            Components: path.resolve(__dirname, 'src/components'),
-            Scripts: path.resolve(__dirname, 'src/scripts'),
-            Store: path.resolve(__dirname, 'src/store'),
-            Styles: path.resolve(__dirname, 'src/styles'),
+            Components: path.resolve(__dirname, 'src', 'components'),
+            Containers: path.resolve(__dirname, 'src', 'containers'),
+            Scripts: path.resolve(__dirname, 'src', 'scripts'),
+            Store: path.resolve(__dirname, 'src', 'store'),
+            Styles: path.resolve(__dirname, 'src', 'styles'),
         },
     },
 
